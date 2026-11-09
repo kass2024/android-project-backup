@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="#F4F6FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- DAILY REPORT HEADER -->
+        <TextView
+            android:text="Daily Attendance"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- PICK DATE -->
+        <Button
+            android:id="@+id/btnPickDate"
+            android:text="Select Date"
+            android:backgroundTint="#3949AB"
+            android:textColor="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- SHOW CHOSEN DATE -->
+        <TextView
+            android:id="@+id/txtSelectedDate"
+            android:text="No date selected"
+            android:textColor="#37474F"
+            android:textStyle="italic"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <!-- MONTHLY REPORT HEADER -->
+        <TextView
+            android:text="Monthly Summary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1A237E"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- MONTH PICKER -->
+        <Spinner
+            android:id="@+id/spinnerMonth"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp" />
+
+        <!-- SELECTED MONTH -->
+        <TextView
+            android:id="@+id/txtSelectedMonth"
+            android:text="No month selected"
+            android:textStyle="italic"
+            android:textColor="#37474F"
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- PROGRESS -->
+        <ProgressBar
+            android:id="@+id/progressHistory"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- RESULTS -->
+        <LinearLayout
+            android:id="@+id/resultsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+</ScrollView>

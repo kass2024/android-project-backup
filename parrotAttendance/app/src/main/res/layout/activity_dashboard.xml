@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F6FA"
+    android:padding="18dp"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- ======================= USER CARD ======================= -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="22dp"
+            android:orientation="vertical"
+            android:background="@drawable/dashboard_card"
+            android:elevation="6dp"
+            android:layout_marginBottom="28dp">
+
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Name"
+                android:textColor="#1A237E"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtUserRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Staff Member"
+                android:textSize="14sp"
+                android:textColor="#546E7A" />
+        </LinearLayout>
+
+        <!-- ======================= START ATTENDANCE ======================= -->
+        <Button
+            android:id="@+id/btnStartAttendance"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="START ATTENDANCE"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:backgroundTint="#2E7D32"
+            android:layout_marginBottom="26dp"
+            android:fontFamily="sans-serif-medium" />
+
+        <!-- ======================= FEATURE BUTTONS ======================= -->
+
+        <Button
+            android:id="@+id/btnHistory"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Attendance History"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:backgroundTint="#3F51B5"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="sans-serif-medium" />
+
+        <Button
+            android:id="@+id/btnMap"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Open GPS Map"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:backgroundTint="#1A237E"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="sans-serif-medium" />
+
+        <!-- ======================= HIDDEN FEATURE ======================= -->
+        <!-- Salary hidden for future use -->
+
+        <Button
+            android:id="@+id/btnSalary"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:layout_marginBottom="0dp" />
+
+        <!-- ======================= LOGOUT ======================= -->
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Log Out"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:backgroundTint="#D32F2F"
+            android:fontFamily="sans-serif-medium" />
+
+    </LinearLayout>
+</ScrollView>
