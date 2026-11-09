@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="kiosk_glow_height">180dp</dimen>
+    <dimen name="kiosk_pad">16dp</dimen>
+    <dimen name="kiosk_logo">112dp</dimen>
+    <dimen name="kiosk_school">28sp</dimen>
+    <dimen name="kiosk_clock">64sp</dimen>
+    <dimen name="kiosk_date">18sp</dimen>
+    <dimen name="kiosk_scan_frame">200dp</dimen>
+    <dimen name="kiosk_card_spot">96dp</dimen>
+    <dimen name="kiosk_lamp">24dp</dimen>
+    <dimen name="kiosk_hint">34sp</dimen>
+    <dimen name="kiosk_powered">15sp</dimen>
+    <dimen name="kiosk_result_photo">180dp</dimen>
+    <dimen name="kiosk_result_status">42sp</dimen>
+    <dimen name="kiosk_result_name">30sp</dimen>
+    <dimen name="kiosk_result_meta">18sp</dimen>
+    <dimen name="kiosk_result_time">28sp</dimen>
+    <dimen name="kiosk_result_min">0dp</dimen>
+    <dimen name="kiosk_result_pad_v">24dp</dimen>
+    <dimen name="login_pad">28dp</dimen>
+</resources>

@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        applicationId "com.xander.staff"
+        minSdkVersion 22
+        targetSdkVersion 34
+        versionCode 94
+        versionName "5.44"
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    signingConfigs {
+        debugKey {
+            storeFile file('C:/Users/user/.android/debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debugKey
+        }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debugKey
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'lib/**/libkestrel*.so'
+        exclude 'lib/**/libmipsFacePro*.so'
+        exclude 'lib/**/libsdk_video*.so'
+        exclude 'lib/**/libtensorflowlite*.so'
+        exclude 'lib/**/libgnustl_shared.so'
+        exclude 'assets/**'
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    sourceSets {
+        main {
+            java {
+                exclude 'com/example/smdt/**'
+            }
+            assets.srcDirs = []
+            jniLibs.srcDirs = []
+        }
+    }
+}
+
+dependencies {
+    implementation files('libs/dkcloudid-usb-android-module-v2.1.0.aar')
+    compileOnly files('src/main/libs/smdt.jar')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+}

@@ -1,0 +1,26 @@
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- Phone portrait (moto g / normal handset) -->
+    <dimen name="kiosk_glow_height">140dp</dimen>
+    <dimen name="kiosk_pad">10dp</dimen>
+    <dimen name="kiosk_logo">88dp</dimen>
+    <dimen name="kiosk_school">22sp</dimen>
+    <dimen name="kiosk_clock">52sp</dimen>
+    <dimen name="kiosk_date">15sp</dimen>
+    <dimen name="kiosk_scan_frame">168dp</dimen>
+    <dimen name="kiosk_card_spot">84dp</dimen>
+    <dimen name="kiosk_lamp">20dp</dimen>
+    <dimen name="kiosk_hint">28sp</dimen>
+    <dimen name="kiosk_powered">14sp</dimen>
+    <dimen name="kiosk_result_photo">140dp</dimen>
+    <dimen name="kiosk_result_status">36sp</dimen>
+    <dimen name="kiosk_result_name">26sp</dimen>
+    <dimen name="kiosk_result_meta">16sp</dimen>
+    <dimen name="kiosk_result_time">26sp</dimen>
+    <dimen name="kiosk_result_min">0dp</dimen>
+    <dimen name="kiosk_result_pad_v">20dp</dimen>
+    <dimen name="login_pad">18dp</dimen>
+</resources>

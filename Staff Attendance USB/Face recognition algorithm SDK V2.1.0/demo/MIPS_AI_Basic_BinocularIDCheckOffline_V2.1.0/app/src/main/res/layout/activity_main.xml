@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.mips.mipsfacedetectdemo.MainActivity">
+
+
+
+    <LinearLayout
+        android:id="@+id/pose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_infosdk"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_below="@+id/pose"
+        android:gravity="center"
+        android:text="(人证比对)demo "
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_below="@+id/tv_infosdk"
+        android:gravity="center"
+        android:text="(支持单目、双目摄像头)"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView
+        android:id="@+id/tv_cam_facing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="select camera preview："
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/tv_info"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cam_facing"
+        android:gravity="left"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_toRightOf="@+id/tv_cam_facing"
+        android:layout_below="@+id/tv_info"
+        />
+
+    <TextView
+        android:id="@+id/choose_algorithm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="select algorithm："
+        android:textSize="20sp"
+        android:layout_below="@+id/tv_cam_facing" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/choose_algorithm_spin"
+        android:gravity="left"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_toRightOf="@+id/choose_algorithm"
+        android:layout_below="@+id/tv_cam_facing"
+        />
+
+    <Button
+        android:id="@+id/bt_idfacepro_test"
+        android:layout_below="@+id/choose_algorithm"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:text="face check test"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:id="@+id/bt_idcompare_facepro_test"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:text="face recognition test"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:layout_below="@+id/bt_idfacepro_test"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:id="@+id/bt_vsfacefeature"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:text="1:1 Picture comparison"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:layout_below="@+id/bt_idcompare_facepro_test"
+        android:layout_centerHorizontal="true" />
+
+
+
+</RelativeLayout>

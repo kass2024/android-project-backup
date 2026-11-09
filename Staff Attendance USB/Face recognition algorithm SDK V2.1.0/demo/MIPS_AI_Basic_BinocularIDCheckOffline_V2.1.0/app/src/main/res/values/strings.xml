@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Staff Attendance</string>
+    <string name="powered_by">Powered by XanderTech</string>
+    <string name="usb_ok_accessibility_desc">Automatically allows Staff Attendance to use the IC Reader USB device.</string>
+</resources>
