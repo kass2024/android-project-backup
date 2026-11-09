@@ -1,0 +1,667 @@
+package com.qonics.somanet;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.AssetManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.net.Uri;
+import android.nfc.Tag;
+import android.os.Handler;
+import android.os.Message;
+import android.preference.PreferenceManager;
+import android.provider.MediaStore;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.orhanobut.hawk.Hawk;
+import com.qonics.model.Permission;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import zj.com.command.sdk.Command;
+import zj.com.command.sdk.PrinterCommand;
+import zj.com.cn.bluetooth.sdk.BluetoothService;
+import zj.com.cn.bluetooth.sdk.DeviceListActivity;
+
+public class PrintActivity extends AppCompatActivity implements View.OnClickListener {
+    /******************************************************************************************************/
+    // Message types sent from the BluetoothService Handler
+    public static final int MESSAGE_STATE_CHANGE = 1;
+    public static final int MESSAGE_READ = 2;
+    public static final int MESSAGE_WRITE = 3;
+    public static final int MESSAGE_DEVICE_NAME = 4;
+    public static final int MESSAGE_TOAST = 5;
+    public static final int MESSAGE_CONNECTION_LOST = 6;
+    public static final int MESSAGE_UNABLE_CONNECT = 7;
+    /*******************************************************************************************************/
+    // Key names received from the BluetoothService Handler
+    public static final String DEVICE_NAME = "device_name";
+    public static final String TOAST = "toast";
+    /******************************************************************************************************/
+    // Debugging
+    private static final String TAG = "Main_Activity";
+    private static final boolean DEBUG = true;
+    // Intent request codes
+    private static final int REQUEST_CONNECT_DEVICE = 1;
+    private static final int REQUEST_ENABLE_BT = 2;
+    private static final int REQUEST_CHOSE_BMP = 3;
+    private static final int REQUEST_CAMER = 4;
+
+    //QRcode
+    private static final int QR_WIDTH = 350;
+    private static final int QR_HEIGHT = 350;
+    /*******************************************************************************************************/
+    private static final String CHINESE = "GBK";
+    private static final String THAI = "CP874";
+    private static final String KOREAN = "EUC-KR";
+    private static final String BIG5 = "BIG5";
+    private static boolean is58mm = true;
+    final String[] itemsen = {"Print Init", "Print and Paper", "Standard ASCII font", "Compressed ASCII font", "Normal size",
+            "Double high power wide", "Twice as high power wide", "Three times the high-powered wide", "Off emphasized mode", "Choose bold mode", "Cancel inverted Print", "Invert selection Print", "Cancel black and white reverse display", "Choose black and white reverse display",
+            "Cancel rotated clockwise 90 °", "Select the clockwise rotation of 90 °", "Feed paper Cut", "Beep", "Standard CashBox",
+            "Open CashBox", "Char Mode", "Chinese Mode", "Print SelfTest", "DisEnable Button", "Enable Button",
+            "Set Underline", "Cancel Underline", "Hex Mode"};
+    final byte[][] byteCommands = {
+            {0x1b, 0x40, 0x0a},// 复位打印机
+            {0x0a}, //打印并走纸
+            {0x1b, 0x4d, 0x00},// 标准ASCII字体
+            {0x1b, 0x4d, 0x01},// 压缩ASCII字体
+            {0x1d, 0x21, 0x00},// 字体不放大
+            {0x1d, 0x21, 0x11},// 宽高加倍
+            {0x1d, 0x21, 0x22},// 宽高加倍
+            {0x1d, 0x21, 0x33},// 宽高加倍
+            {0x1b, 0x45, 0x00},// 取消加粗模式
+            {0x1b, 0x45, 0x01},// 选择加粗模式
+            {0x1b, 0x7b, 0x00},// 取消倒置打印
+            {0x1b, 0x7b, 0x01},// 选择倒置打印
+            {0x1d, 0x42, 0x00},// 取消黑白反显
+            {0x1d, 0x42, 0x01},// 选择黑白反显
+            {0x1b, 0x56, 0x00},// 取消顺时针旋转90°
+            {0x1b, 0x56, 0x01},// 选择顺时针旋转90°
+            {0x0a, 0x1d, 0x56, 0x42, 0x01, 0x0a},//切刀指令
+            {0x1b, 0x42, 0x03, 0x03},//蜂鸣指令
+            {0x1b, 0x70, 0x00, 0x50, 0x50},//钱箱指令
+            {0x10, 0x14, 0x00, 0x05, 0x05},//实时弹钱箱指令
+            {0x1c, 0x2e},// 进入字符模式
+            {0x1c, 0x26}, //进入中文模式
+            {0x1f, 0x11, 0x04}, //打印自检页
+            {0x1b, 0x63, 0x35, 0x01}, //禁止按键
+            {0x1b, 0x63, 0x35, 0x00}, //取消禁止按键
+            {0x1b, 0x2d, 0x02, 0x1c, 0x2d, 0x02}, //设置下划线
+            {0x1b, 0x2d, 0x00, 0x1c, 0x2d, 0x00}, //取消下划线
+            {0x1f, 0x11, 0x03}, //打印机进入16进制模式
+    };
+    /***************************条                          码***************************************************************/
+    final String[] codebar = {"UPC_A", "UPC_E", "JAN13(EAN13)", "JAN8(EAN8)",
+            "CODE39", "ITF", "CODABAR", "CODE93", "CODE128", "QR Code"};
+    final byte[][] byteCodebar = {
+            {0x1b, 0x40},// 复位打印机
+            {0x1b, 0x40},// 复位打印机
+            {0x1b, 0x40},// 复位打印机
+            {0x1b, 0x40},// 复位打印机
+            {0x1b, 0x40},// 复位打印机
+            {0x1b, 0x40},// 复位打印机
+            {0x1b, 0x40},// 复位打印机
+            {0x1b, 0x40},// 复位打印机
+            {0x1b, 0x40},// 复位打印机
+            {0x1b, 0x40},// 复位打印机
+    };
+    EditText editText, customerId, amount;
+    ImageView imageViewPicture;
+    Map<String, String> amk;
+    /******************************************************************************************************/
+
+    String schoolName = "", phone = "", mail = "", pobox = "", issuedby = "";
+    TextView schoolNameTxt, schoolTelTxt, schoolEmailTxt, schoolPoboxTxt;
+    /*********************************************************************************/
+    private TextView mTitle;
+    private RadioButton width_58mm, width_80;
+    private RadioButton thai, big5, Simplified, Korean;
+    private CheckBox hexBox;
+    private Button send_print_button, cancel;
+    private Button btnScanButton = null;
+    private TextView stdName, destination, reason, lvTime, rtTime, approved;
+    /******************************************************************************************************/
+    // Name of the connected device
+    private String mConnectedDeviceName = null;
+    /****************************************************************************************************/
+    @SuppressLint("HandlerLeak")
+    private final Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MESSAGE_STATE_CHANGE:
+                    if (DEBUG)
+                        Log.i(TAG, "MESSAGE_STATE_CHANGE: " + msg.arg1);
+                    switch (msg.arg1) {
+                        case BluetoothService.STATE_CONNECTED:
+                            btnScanButton.setText(getText(R.string.Connecting));
+                            send_print_button.setVisibility(View.VISIBLE);
+                            //Print_Test();//
+                            Log.d(TAG, "You have successful connected");
+                            btnScanButton.setEnabled(false);
+                            Toast.makeText(getApplicationContext(),
+                                    R.string.connect,
+                                    Toast.LENGTH_SHORT).show();
+                            break;
+                        case BluetoothService.STATE_CONNECTING:
+                            Toast.makeText(getApplicationContext(),
+                                    R.string.title_connecting,
+                                    Toast.LENGTH_SHORT).show();
+                            break;
+                        case BluetoothService.STATE_LISTEN:
+                        case BluetoothService.STATE_NONE:
+                            Toast.makeText(getApplicationContext(),
+                                    R.string.title_not_connected,
+                                    Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                    break;
+                case MESSAGE_WRITE:
+
+                    break;
+                case MESSAGE_READ:
+
+                    break;
+                case MESSAGE_DEVICE_NAME:
+                    // save the connected device's name
+                    mConnectedDeviceName = msg.getData().getString(DEVICE_NAME);
+                    Toast.makeText(getApplicationContext(),
+                            "Connected to " + mConnectedDeviceName,
+                            Toast.LENGTH_SHORT).show();
+                    break;
+                case MESSAGE_TOAST:
+                    Toast.makeText(getApplicationContext(),
+                            msg.getData().getString(TOAST), Toast.LENGTH_SHORT)
+                            .show();
+                    break;
+                case MESSAGE_CONNECTION_LOST:    //蓝牙已断开连接
+                    Toast.makeText(getApplicationContext(), "Device connection was lost",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+                case MESSAGE_UNABLE_CONNECT:     //无法连接设备
+                    Toast.makeText(getApplicationContext(), "Unable to connect device",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+    };
+    // Local Bluetooth adapter
+    private BluetoothAdapter mBluetoothAdapter = null;
+    // Member object for the services
+    private BluetoothService mService = null;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (DEBUG)
+            Log.e(TAG, "+++ ON CREATE +++");
+        setContentView(R.layout.activity_print);
+
+        // Get local Bluetooth adapter
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        // If the adapter is null, then Bluetooth is not supported
+        if (mBluetoothAdapter == null) {
+            Toast.makeText(this, "Bluetooth is not available",
+                    Toast.LENGTH_LONG).show();
+            finish();
+        }
+
+        schoolNameTxt = (TextView) findViewById(R.id.schoolName);
+        schoolTelTxt = (TextView) findViewById(R.id.schoolTel);
+        schoolEmailTxt = (TextView) findViewById(R.id.schoolEmail);
+        schoolPoboxTxt = (TextView) findViewById(R.id.schoolPobox);
+
+        assignValues();
+    }
+
+    private void assignValues(){
+        if (Hawk.contains("schoolInfo")){
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+            Map<String, String> school = Hawk.get("schoolInfo");
+            schoolName = school.get("acronym");
+            phone = school.get("phone");
+            mail = school.get("email");
+            pobox = school.get("pobox");
+            issuedby = preferences.getString("username", "NONE");
+
+            schoolNameTxt.setText("School Name: " + schoolName);
+            schoolTelTxt.setText("Telephone: " + phone);
+            schoolEmailTxt.setText("Email: " + mail);
+            schoolPoboxTxt.setText("P.O.Box: " + pobox);
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // If Bluetooth is not on, request that it be enabled.
+        // setupChat() will then be called during onActivityResult
+        if (!mBluetoothAdapter.isEnabled()) {
+            Intent enableIntent = new Intent(
+                    BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
+            // Otherwise, setup the session
+        } else {
+            if (mService == null)
+                KeyListenerInit(true);
+        }
+    }
+
+    @Override
+    public synchronized void onResume() {
+        super.onResume();
+
+        if (mService != null) {
+
+            if (mService.getState() == BluetoothService.STATE_NONE) {
+                // Start the Bluetooth services
+                mService.start();
+            }
+        }
+    }
+
+    @Override
+    public synchronized void onPause() {
+        super.onPause();
+        if (DEBUG)
+            Log.e(TAG, "- ON PAUSE -");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (DEBUG)
+            Log.e(TAG, "-- ON STOP --");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // Stop the Bluetooth services
+        if (mService != null)
+            mService.stop();
+        if (DEBUG)
+            Log.e(TAG, "--- ON DESTROY ---");
+    }
+
+    /*****************************************************************************************************/
+
+    private void KeyListenerInit(boolean b) {
+        amk = Hawk.get("infos_to_submit");
+        btnScanButton = (Button) findViewById(R.id.button_scan);
+        btnScanButton.setOnClickListener(this);
+
+        cancel = (Button) findViewById(R.id.cancel);
+        cancel.setOnClickListener(this);
+
+        send_print_button = (Button) findViewById(R.id.send_print_button);
+
+        send_print_button.setOnClickListener(this);
+
+        stdName = (TextView) findViewById(R.id.stdName);
+        destination = (TextView) findViewById(R.id.destination);
+        approved = (TextView) findViewById(R.id.approved);
+        reason = (TextView) findViewById(R.id.reason);
+        lvTime = (TextView) findViewById(R.id.lvTime);
+        rtTime = (TextView) findViewById(R.id.rtTime);
+
+        String sName = Hawk.get("std_name");
+        stdName.setText("Student Name "+sName);
+        destination.setText("Destination: "+amk.get("dd"));
+        approved.setText("Approved: ");
+        reason.setText("Reason: "+amk.get("dr"));
+        lvTime.setText("Leave Time: "+amk.get("lvt"));
+        rtTime.setText("Return Time: "+amk.get("rtt"));
+
+        mService = new BluetoothService(this, mHandler);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_scan: {
+                Intent serverIntent = new Intent(PrintActivity.this, DeviceListActivity.class);
+                startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE);
+                break;
+            }
+            case R.id.send_print_button: {
+
+                String schoolName = "";
+                String stdId = Hawk.get("std_id");
+                String stdName = Hawk.get("std_name");
+                String reason = amk.get("dr");
+                String dest = amk.get("dd");
+                String obser= amk.get("ob");
+                String lvTm = amk.get("lvt");
+                String rtTm = amk.get("rtt");
+                showSnackBar(stdName);
+
+                savedata();
+                Print_Ex(stdName, dest,obser, lvTm, rtTm, reason, "");
+
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                Hawk.delete("infos_to_submit");
+                                Intent intent = new Intent(PrintActivity.this, Permission_Activity.class);
+                                startActivity(intent);
+                                finish();
+                                Log.i(TAG, "Close Print window after print");
+                            }
+                        }, 10000);
+            }
+            case R.id.cancel:
+                Hawk.delete("infos_to_submit");
+                Intent intent = new Intent(PrintActivity.this, Permission_Activity.class);
+                startActivity(intent);
+                finish();
+                break;
+            default:
+                break;
+        }
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private void savedata(){
+        int stdId = (int) Hawk.get("std_id");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        String d = formatter.toString();
+
+        Permission newPermission = new Permission(stdId, String.valueOf(stdId), amk.get("dd"), amk.get("ob"), Long.valueOf(amk.get("lvt")), Long.valueOf(amk.get("rtt")), amk.get("dr"), amk.get("sms"), issuedby, Long.valueOf(d));
+        Boolean save = new SMController(getApplicationContext()).create(newPermission);
+
+        if (save)
+            Log.d(TAG, "New Permission Saved");
+        else
+            Log.e(TAG, "New Permission Error !!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    }
+
+    /*****************************************************************************************************/
+    /*
+	* SendDataString
+	*/
+    private void SendDataString(String data) {
+
+        if (mService.getState() != BluetoothService.STATE_CONNECTED) {
+            Toast.makeText(this, R.string.not_connected, Toast.LENGTH_SHORT)
+                    .show();
+            return;
+        }
+        if (data.length() > 0) {
+            try {
+                mService.write(data.getBytes("GBK"));
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /*
+    *SendDataByte
+    */
+    private void SendDataByte(byte[] data) {
+
+        if (mService.getState() != BluetoothService.STATE_CONNECTED) {
+            Toast.makeText(this, R.string.not_connected, Toast.LENGTH_SHORT)
+                    .show();
+            return;
+        }
+        mService.write(data);
+    }
+
+    private void showSnackBar(String msg) {
+        View lnlnotif = this.getWindow().getDecorView().findViewById(R.id.print_save_a);
+        Snackbar snackbar = Snackbar
+                .make(lnlnotif, msg, Snackbar.LENGTH_LONG);
+
+        // Changing message text color
+        snackbar.setActionTextColor(Color.RED);
+
+        // Changing action button text color
+        View sbView = snackbar.getView();
+        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.WHITE);
+        snackbar.show();
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (DEBUG)
+            Log.d(TAG, "onActivityResult " + resultCode);
+        switch (requestCode) {
+            case REQUEST_CONNECT_DEVICE: {
+                // When DeviceListActivity returns with a device to connect
+                if (resultCode == Activity.RESULT_OK) {
+                    // Get the device MAC address
+                    String address = data.getExtras().getString(
+                            DeviceListActivity.EXTRA_DEVICE_ADDRESS);
+                    // Get the BLuetoothDevice object
+                    if (BluetoothAdapter.checkBluetoothAddress(address)) {
+                        BluetoothDevice device = mBluetoothAdapter
+                                .getRemoteDevice(address);
+                        // Attempt to connect to the device
+                        mService.connect(device);
+                    }
+                }
+                break;
+            }
+            case REQUEST_ENABLE_BT: {
+                // When the request to enable Bluetooth returns
+                if (resultCode == Activity.RESULT_OK) {
+                    // Bluetooth is now enabled, so set up a session
+                    KeyListenerInit(true);
+                } else {
+                    // User did not enable Bluetooth or an error occured
+                    Log.d(TAG, "BT not enabled");
+                    Toast.makeText(this, R.string.bt_not_enabled_leaving,
+                            Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+            }
+            case REQUEST_CHOSE_BMP: {
+                if (resultCode == Activity.RESULT_OK) {
+                    Uri selectedImage = data.getData();
+                    String[] filePathColumn = {MediaStore.MediaColumns.DATA};
+
+                    Cursor cursor = getContentResolver().query(selectedImage,
+                            filePathColumn, null, null, null);
+                    cursor.moveToFirst();
+
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    String picturePath = cursor.getString(columnIndex);
+                    cursor.close();
+
+                    BitmapFactory.Options opts = new BitmapFactory.Options();
+                    opts.inJustDecodeBounds = true;
+                    BitmapFactory.decodeFile(picturePath, opts);
+                    opts.inJustDecodeBounds = false;
+                    if (opts.outWidth > 1200) {
+                        opts.inSampleSize = opts.outWidth / 1200;
+                    }
+                    Bitmap bitmap = BitmapFactory.decodeFile(picturePath, opts);
+                    if (null != bitmap) {
+                        imageViewPicture.setImageBitmap(bitmap);
+                    }
+                } else {
+                    Toast.makeText(this, getString(R.string.msg_statev1), Toast.LENGTH_SHORT).show();
+                }
+                break;
+            }
+            case REQUEST_CAMER: {
+                if (resultCode == Activity.RESULT_OK) {
+                    handleSmallCameraPhoto(data);
+                } else {
+                    Toast.makeText(this, getText(R.string.camer), Toast.LENGTH_SHORT).show();
+                }
+                break;
+            }
+        }
+    }
+
+    /**
+     * 打印自定义小票
+     */
+    @SuppressLint("SimpleDateFormat")
+    private void Print_Ex(String std_name, String dest,String obser, String lvTime, String rtTime, String reason, String approved) {
+        String lang = getString(R.string.strLang);
+
+        if ((lang.compareTo("en")) == 0) {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+            String str = formatter.format(curDate);
+            String date = str + "\n\n\n\n\n\n";
+            if (is58mm) {
+                try {
+                    byte[] qrcode = PrinterCommand.getBarCommand("Student Permission", 0, 3, 6);//
+                    Command.ESC_Align[2] = 0x00;
+                    SendDataByte(Command.ESC_Align);
+                    Command.GS_ExclamationMark[2] = 0x10;
+                    SendDataByte(Command.GS_ExclamationMark);
+                    String dataa = "\nSchool: "+schoolName+"\nPhone: "+phone;
+                    SendDataByte(dataa.getBytes("GBK"));
+
+                    Command.ESC_Align[2] = 0x00;
+                    SendDataByte(Command.ESC_Align);
+                    Command.GS_ExclamationMark[2] = 0x00;
+                    SendDataByte(Command.GS_ExclamationMark);
+                    String datMail = "\nE-Mail: " + mail;
+                    SendDataByte(datMail.getBytes("GBK"));
+
+                    Command.ESC_Align[2] = 0x00;
+                    SendDataByte(Command.ESC_Align);
+                    Command.GS_ExclamationMark[2] = 0x10;
+                    SendDataByte(Command.GS_ExclamationMark);
+                    String datPobox = "\nP.O.Box: " + pobox + "";
+                    SendDataByte(datPobox.getBytes("GBK"));
+
+                    Command.ESC_Align[2] = 0x01;
+                    SendDataByte(Command.ESC_Align);
+                    SendDataByte(Command.ESC_Align);
+                    Command.GS_ExclamationMark[2] = 0x11;
+                    SendDataByte(Command.GS_ExclamationMark);
+                    SendDataByte("\n\nStudent Permission\n==================\n\n".getBytes("GBK"));
+
+                    Command.ESC_Align[2] = 0x00;
+                    SendDataByte(Command.ESC_Align);
+                    Command.GS_ExclamationMark[2] = 0x00;
+                    SendDataByte(Command.GS_ExclamationMark);
+                    String data = "Student Name: " + std_name + "\n\nDestination: " + dest + " \n\nReason: "+ reason +"\n\nLeaving Time: "+lvTime+"\n\nReturning Time: "+rtTime+"\n\nApproved By: "+issuedby+"\n\n\n";
+                    SendDataByte(data.getBytes("GBK"));
+
+                    Command.ESC_Align[2] = 0x01;
+                    SendDataByte(Command.ESC_Align);
+                    SendDataString("\n\nprinted on: " + date);
+                    Command.GS_ExclamationMark[2] = 0x11;
+                    SendDataByte(Command.GS_ExclamationMark);
+//                    SendDataByte("Welcome again!\n".getBytes("GBK"));
+                    Command.ESC_Align[2] = 0x00;
+                    SendDataByte(Command.ESC_Align);
+                    Command.GS_ExclamationMark[2] = 0x00;
+                    SendDataByte(Command.GS_ExclamationMark);
+                    Command.ESC_Align[2] = 0x02;
+                    SendDataByte(Command.ESC_Align);
+                    // Print job
+                    SendDataByte(PrinterCommand.POS_Set_PrtAndFeedPaper(48));
+                    SendDataByte(Command.GS_V_m_n);
+
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                try {
+                    byte[] qrcode = PrinterCommand.getBarCommand("Agruni Receipt Printer!", 0, 3, 8);
+                    Command.ESC_Align[2] = 0x01;
+                    SendDataByte(Command.ESC_Align);
+                    SendDataByte(qrcode);
+
+                    Command.ESC_Align[2] = 0x01;
+                    SendDataByte(Command.ESC_Align);
+                    Command.GS_ExclamationMark[2] = 0x11;
+                    SendDataByte(Command.GS_ExclamationMark);
+                    SendDataByte("NIKE Shop\n".getBytes("GBK"));
+                    Command.ESC_Align[2] = 0x00;
+                    SendDataByte(Command.ESC_Align);
+                    Command.GS_ExclamationMark[2] = 0x00;
+                    SendDataByte(Command.GS_ExclamationMark);
+                    SendDataByte("Number: 888888\nReceipt  S00003333\nCashier：1001\nDate：xxxx-xx-xx\nPrint Time：xxxx-xx-xx  xx:xx:xx\n".getBytes("GBK"));
+                    SendDataByte("Name                    Quantity price  Money\nNIKErunning shoes        10.00   899     8990\nNIKEBasketball Shoes     10.00   1599    15990\n".getBytes("GBK"));
+                    SendDataByte("Quantity：               20.00\ntotal：                  16889.00\npayment：                17000.00\nKeep the change：                111.00\n".getBytes("GBK"));
+                    SendDataByte("company name：NIKE\nSite：www.xxx.xxx\naddress：shenzhenxxAreaxxnumber\nphone number：0755-11111111\nHelpline：400-xxx-xxxx\n================================================\n".getBytes("GBK"));
+                    Command.ESC_Align[2] = 0x01;
+                    SendDataByte(Command.ESC_Align);
+                    Command.GS_ExclamationMark[2] = 0x11;
+                    SendDataByte(Command.GS_ExclamationMark);
+                    SendDataByte("Welcome again!\n".getBytes("GBK"));
+                    Command.ESC_Align[2] = 0x00;
+                    SendDataByte(Command.ESC_Align);
+                    Command.GS_ExclamationMark[2] = 0x00;
+                    SendDataByte(Command.GS_ExclamationMark);
+                    SendDataByte("(The above information is for testing template, if agree, is purely coincidental!)\n".getBytes("GBK"));
+                    Command.ESC_Align[2] = 0x02;
+                    SendDataByte(Command.ESC_Align);
+                    SendDataString(date);
+                    SendDataByte(PrinterCommand.POS_Set_PrtAndFeedPaper(48));
+                    SendDataByte(Command.GS_V_m_n);
+                } catch (UnsupportedEncodingException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void handleSmallCameraPhoto(Intent intent) {
+        Bundle extras = intent.getExtras();
+        Bitmap mImageBitmap = (Bitmap) extras.get("data");
+        imageViewPicture.setImageBitmap(mImageBitmap);
+    }
+
+    private Bitmap getImageFromAssetsFile(String fileName) {
+        Bitmap image = null;
+        AssetManager am = getResources().getAssets();
+        try {
+            InputStream is = am.open(fileName);
+            image = BitmapFactory.decodeStream(is);
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return image;
+
+    }
+
+}

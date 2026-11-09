@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:background="@drawable/rounded_button_menu2"
+    android:layout_marginBottom="11dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp"
+    android:id="@+id/LinearLayoutItem">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dip"
+            android:id="@+id/IdfeeTitle"
+            android:paddingLeft="14dp"
+            android:textStyle="normal"
+            android:textColor="@color/colorBlack"
+            android:textSize="16dp"
+            android:text="Book Title"
+            />
+        <TextView
+            android:id="@+id/IdfeeAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2000"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:paddingLeft="18dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:id="@+id/CheckBoxSelected"
+        android:src="@drawable/icon_close"
+        android:tint="@color/colorAccent"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        tools:ignore="UseAppTint" />
+</LinearLayout>

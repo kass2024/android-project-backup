@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootMarksEntry"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    android:fitsSystemWindows="true"
+    tools:context=".teacher.MarksEntryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="14dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txttitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_new_entry"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtlecturer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#93C5FD"
+                    android:textSize="13sp"
+                    tools:text="Teacher Name" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtexit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="@string/exit"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Offline badge row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/countOfflineMarks"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/layout_circle_back"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/colorWhite"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/viewOfflineMarkId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:text="Offline queue"
+                android:textColor="@color/textPrimary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtRefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:text="Refresh"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:fillViewport="true"
+            android:paddingBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/txtEntryMode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:text="Same setup as web Marks Entry"
+                    android:textColor="@color/textMuted"
+                    android:textSize="13sp" />
+
+                <!-- Exam category (mark type) — matches web marktype -->
+                <TextView
+                    style="@style/MarksLabel"
+                    android:text="Examination category" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="14dp"
+                    android:background="@drawable/marks_field_bg">
+
+                    <Spinner
+                        android:id="@+id/marktype"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp" />
+                </FrameLayout>
+
+                <!-- Class -->
+                <LinearLayout
+                    android:id="@+id/lnlclasses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/MarksLabel"
+                        android:text="@string/lbl_select_class" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="14dp"
+                        android:background="@drawable/marks_field_bg">
+
+                        <Spinner
+                            android:id="@+id/spclass"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <!-- Course -->
+                <LinearLayout
+                    android:id="@+id/lnlcourse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/MarksLabel"
+                        android:text="@string/lbl_select_course" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="14dp"
+                        android:background="@drawable/marks_field_bg">
+
+                        <Spinner
+                            android:id="@+id/spcourse"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <!-- Period + CAT type (web: only for marktype=1) -->
+                <LinearLayout
+                    android:id="@+id/lnlperiod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/txtPeriodLabel"
+                        style="@style/MarksLabel"
+                        android:text="@string/lbl_select_mark_period" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/marks_field_bg">
+
+                        <Spinner
+                            android:id="@+id/period"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/txtLockHint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/colorError"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/lnlcattype"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/MarksLabel"
+                            android:text="@string/lbl_select_cat_type" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginBottom="14dp"
+                            android:background="@drawable/marks_field_bg">
+
+                            <Spinner
+                                android:id="@+id/cat_type"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp" />
+                        </FrameLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Hidden legacy fields kept for ID compatibility -->
+                <Spinner
+                    android:id="@+id/spAcademicType"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/lnlSemester"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <Spinner
+                        android:id="@+id/spSemester"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/MarksLabel"
+                    android:text="@string/lbl_enter_maximum" />
+
+                <EditText
+                    android:id="@+id/maximum"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="14dp"
+                    android:background="@drawable/marks_field_bg"
+                    android:hint="@string/hint_enter_maximum"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/textPrimary"
+                    android:textColorHint="@color/textMuted"
+                    android:textSize="15sp" />
+
+                <TextView
+                    style="@style/MarksLabel"
+                    android:text="@string/lbl_enter_examination_date" />
+
+                <EditText
+                    android:id="@+id/lay_date_from"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/marks_field_bg"
+                    android:drawableEnd="@drawable/ic_date"
+                    android:focusable="false"
+                    android:hint="Select date"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/textPrimary"
+                    android:textColorHint="@color/textMuted"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/btnstart"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@drawable/marks_btn_primary"
+                    android:text="@string/start"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txterror"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:textColor="@color/colorError"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <!-- Loading overlay -->
+    <RelativeLayout
+        android:id="@+id/rlvloading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CC0B1220"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/prb"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/txtstatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/prb"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:text="@string/please_wait"
+            android:textColor="@color/colorWhite"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:id="@+id/imgerror"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/description_info"
+            android:src="@drawable/warning"
+            android:visibility="invisible"
+            app:tint="@color/colorWarning" />
+
+        <TextView
+            android:id="@+id/txtretry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="48dp"
+            android:padding="12dp"
+            android:text="@string/retry"
+            android:textColor="@color/colorAccent"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+    </RelativeLayout>
+</FrameLayout>

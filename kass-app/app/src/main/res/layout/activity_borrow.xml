@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BorrowActivity">
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/borr_header"
+        android:textColor="@color/colorAccent"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+    <include
+        layout="@layout/one_student"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15sp"
+        android:background="@drawable/logout"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp">
+
+            <androidx.appcompat.widget.SearchView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:queryHint="Search book here"
+                app:iconifiedByDefault="false"
+                android:id="@+id/srchbook"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:layout_gravity="center"
+                android:gravity="left">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Selected book"
+                    android:textColor="@color/accent"
+                    android:padding="5dp"
+                    android:textAllCaps="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title: "
+                    android:padding="5dp"
+                    android:id="@+id/txttitle"
+                    android:textColor="#000"
+                    android:textAllCaps="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Author: "
+                    android:padding="5dp"
+                    android:textColor="#000"
+                    android:id="@+id/txtauthor"
+                    android:textAllCaps="true"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#cdcdcd"
+                    android:layout_margin="5dp"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="borrow parameters"
+                android:textColor="@color/accent"
+                android:padding="5dp"
+                android:layout_gravity="left"
+                android:textAllCaps="true"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="left">
+
+                <EditText
+                    android:id="@+id/bw_date_from"
+                    android:layout_width="165dp"
+                    android:layout_height="?actionBarSize"
+                    android:layout_margin="3dp"
+                    android:hint="Borrowed date"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:textSize="15sp" />
+                <EditText
+                    android:id="@+id/bw_date_to"
+                    android:layout_width="165dp"
+                    android:layout_height="?actionBarSize"
+                    android:layout_margin="3dp"
+                    android:hint="Return due date"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:background="@drawable/save"
+        android:text="Save" />
+    <ProgressBar
+        android:id="@+id/prb"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"/>
+</LinearLayout>

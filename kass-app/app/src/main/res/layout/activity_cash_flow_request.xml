@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cf_new_request"
+            android:textColor="@color/textPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtBudgetTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/textMuted"
+            android:textSize="12sp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="@string/cf_budget_line" android:textStyle="bold"
+            android:textColor="@color/textPrimary" />
+        <Spinner android:id="@+id/spBudgetLine" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:background="@drawable/spinner_background"
+            android:padding="8dp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:text="@string/cf_payee" android:textStyle="bold"
+            android:textColor="@color/textPrimary" />
+        <EditText android:id="@+id/edPayee" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="@string/cf_payee_hint"
+            android:inputType="textPersonName" android:background="@drawable/rounded_edittext"
+            android:padding="10dp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:text="@string/cf_purpose" android:textStyle="bold"
+            android:textColor="@color/textPrimary" />
+        <EditText android:id="@+id/edPurpose" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:minLines="2" android:inputType="textMultiLine"
+            android:hint="@string/cf_purpose_hint" android:background="@drawable/rounded_edittext"
+            android:padding="10dp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:text="@string/cf_amount" android:textStyle="bold"
+            android:textColor="@color/textPrimary" />
+        <EditText android:id="@+id/edAmount" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:inputType="numberDecimal"
+            android:background="@drawable/rounded_edittext" android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/txtApprovalChain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/cf_kpi_card_bg"
+            android:padding="10dp"
+            android:text="@string/cf_chain_hint"
+            android:textColor="@color/colorAccent"
+            android:textSize="12sp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:text="@string/cf_payment_method" android:textStyle="bold"
+            android:textColor="@color/textPrimary" />
+        <Spinner android:id="@+id/spPaymentMethod" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:background="@drawable/spinner_background"
+            android:padding="8dp" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" android:text="@string/cf_urgency" android:textStyle="bold"
+            android:textColor="@color/textPrimary" />
+        <Spinner android:id="@+id/spUrgency" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:background="@drawable/spinner_background"
+            android:padding="8dp" />
+
+        <TextView android:id="@+id/txtDocStatus" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="14dp"
+            android:text="@string/cf_doc_none" android:textColor="#888" />
+
+        <Button android:id="@+id/btnAttachScan" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp"
+            android:text="@string/cf_attach_scan" />
+
+        <Button android:id="@+id/btnSaveRequest" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="16dp"
+            android:text="@string/cf_save_draft" />
+
+        <Button android:id="@+id/btnSubmitRequest" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="@string/cf_submit" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@color/surface">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/das_header"
+        android:textColor="@color/colorAccent"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/lnlnotif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="#0A8FA7"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgnotif"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/description_info"
+            app:tint="@color/colorWhite"
+            app:srcCompat="@drawable/info" />
+
+        <TextView
+            android:id="@+id/txtinfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="KAMANA Laurent (Administrator)"
+            android:textColor="@color/colorWhite"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnlogout"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:textColor="#0A8FA7"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/logout"
+            android:text="@string/logout" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:id="@+id/lnlstudent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:contentDescription="@string/description_info"
+                    android:padding="15dp"
+                    app:srcCompat="@drawable/peoples"
+                    app:tint="#676867" />
+
+                <TextView
+                    android:id="@+id/txtstudent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:text="@string/students"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnlstaff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:contentDescription="@string/staff_menu"
+                    android:padding="18dp"
+                    app:srcCompat="@drawable/ic_staff"
+                    app:tint="#676867" />
+
+                <TextView
+                    android:id="@+id/txtstaff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:text="@string/staff_menu"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lnlmarksentry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:contentDescription="@string/description_info"
+                    android:padding="15dp"
+                    app:srcCompat="@drawable/permission"
+                    app:tint="#676867" />
+
+                <TextView
+                    android:id="@+id/txtmarksentry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:text="@string/marks"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnlattendance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:contentDescription="@string/description_info"
+                    android:padding="25dp"
+                    app:srcCompat="@drawable/attendance"
+                    app:tint="#676867" />
+
+                <TextView
+                    android:id="@+id/txtattendance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:singleLine="false"
+                    android:text="@string/das_course"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnldailyattendance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:contentDescription="@string/description_info"
+                    android:padding="25dp"
+                    app:srcCompat="@drawable/attendance"
+                    app:tint="#676867" />
+
+                <TextView
+                    android:id="@+id/txtdailyattendance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:singleLine="false"
+                    android:text="@string/das_daily"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnlleaves"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:contentDescription="@string/description_info"
+                    android:padding="25dp"
+                    android:src="@drawable/leaves"
+                    app:tint="#676867" />
+
+                <TextView
+                    android:id="@+id/txtleaves"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:text="@string/das_leave"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </GridLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/txtstatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/powered_by"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/bottom_safe"
+        android:textColor="@color/textMuted" />
+
+</LinearLayout>

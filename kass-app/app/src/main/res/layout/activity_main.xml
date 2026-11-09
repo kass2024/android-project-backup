@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    android:orientation="vertical">
+
+    <!-- Logged school header (replaces SmartSMS branding) -->
+    <LinearLayout
+        android:id="@+id/lnlSchoolHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/cf_header_bg"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/das_school_label"
+            android:textAllCaps="true"
+            android:textColor="#B2EBF2"
+            android:textSize="11sp"
+            android:letterSpacing="0.08" />
+
+        <TextView
+            android:id="@+id/txtSchoolName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="GS Example School" />
+
+        <TextView
+            android:id="@+id/txtSchoolMeta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:lineSpacingExtra="2dp"
+            android:textColor="#E0F7FA"
+            android:textSize="12sp"
+            tools:text="Phone: 0788...\nEmail: school@example.com" />
+
+        <TextView
+            android:id="@+id/txtSchoolAcademic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="Term 1 · Academic year 2025" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnlnotif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/cf_header_bg"
+        android:orientation="horizontal"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp">
+
+        <ImageView
+            android:id="@+id/imgnotif"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/description_info"
+            app:tint="@color/colorWhite"
+            app:srcCompat="@drawable/info" />
+
+        <TextView
+            android:id="@+id/txtinfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textColor="@color/colorWhite"
+            android:textSize="13sp"
+            tools:text="NDUWAYESU ELIE\nHead master" />
+
+        <Button
+            android:id="@+id/btnlogout"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:textColor="#0A8FA7"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/logout"
+            android:text="@string/logout" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/lnlMonitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/monitor_card_bg"
+            android:clickable="true"
+            android:elevation="8dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <View
+                android:id="@+id/monitorPulse"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/monitor_pulse" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/all_school_monitoring"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/all_school_monitoring_sub"
+                    android:textColor="#E0F7FA"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="›"
+                android:textColor="@color/colorWhite"
+                android:textSize="28sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnlLocationAttendance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/location_card_bg"
+            android:clickable="true"
+            android:elevation="8dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <View
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/monitor_pulse" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location_attendance"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/location_attendance_sub"
+                    android:textColor="#E8EEF9"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="›"
+                android:textColor="@color/colorWhite"
+                android:textSize="28sp" />
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <!-- Discipline -->
+            <LinearLayout
+                android:id="@+id/lnldiscipline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="5dp"
+                    android:contentDescription="@string/description_info"
+                    app:srcCompat="@drawable/discpline" />
+
+                <TextView
+                    android:id="@+id/txtdiscipline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/discipline"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Vernacular speaking -->
+            <LinearLayout
+                android:id="@+id/lnlvernacular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="5dp"
+                    android:contentDescription="@string/vernacular_menu"
+                    app:srcCompat="@drawable/discpline" />
+
+                <TextView
+                    android:id="@+id/txtvernacular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/vernacular_menu"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnlclinic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="22dp"
+                    android:contentDescription="@string/clinic"
+                    app:srcCompat="@drawable/ic_clinic" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/clinic"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Visiting -->
+            <LinearLayout
+                android:id="@+id/lnlvisiting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="15dp"
+                    android:contentDescription="@string/visiting_menu"
+                    app:tint="#676867"
+                    app:srcCompat="@drawable/peoples" />
+
+                <TextView
+                    android:id="@+id/txtvisiting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/visiting_menu"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Permission -->
+            <LinearLayout
+                android:id="@+id/lnlpermission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="10dp"
+                    android:contentDescription="@string/description_info"
+                    app:tint="#676867"
+                    app:srcCompat="@drawable/permission" />
+
+                <TextView
+                    android:id="@+id/txtpermission"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/permission"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Student -->
+            <LinearLayout
+                android:id="@+id/lnlstudent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="15dp"
+                    android:contentDescription="@string/description_info"
+                    app:tint="#676867"
+                    app:srcCompat="@drawable/peoples" />
+
+                <TextView
+                    android:id="@+id/txtstudent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/students"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Staff -->
+            <LinearLayout
+                android:id="@+id/lnlstaff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="18dp"
+                    android:contentDescription="@string/staff_menu"
+                    app:tint="#676867"
+                    app:srcCompat="@drawable/ic_staff" />
+
+                <TextView
+                    android:id="@+id/txtstaff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/staff_menu"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Attendance -->
+            <LinearLayout
+                android:id="@+id/lnlattendance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="25dp"
+                    app:tint="#676867"
+                    android:contentDescription="@string/description_info"
+                    app:srcCompat="@drawable/attendance" />
+
+                <TextView
+                    android:id="@+id/txtattendance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/das_course"
+                    android:singleLine="false"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Daily Attendance -->
+            <LinearLayout
+                android:id="@+id/lnldailyattendance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="25dp"
+                    app:tint="#676867"
+                    android:contentDescription="@string/description_info"
+                    app:srcCompat="@drawable/attendance" />
+
+                <TextView
+                    android:id="@+id/txtdailyattendance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/das_daily"
+                    android:singleLine="false"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnldormattendance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="25dp"
+                    app:tint="#676867"
+                    android:contentDescription="@string/dormitory_attendance"
+                    app:srcCompat="@drawable/attendance" />
+
+                <TextView
+                    android:id="@+id/txtdormattendance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/dormitory_attendance"
+                    android:singleLine="false"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Payment -->
+            <LinearLayout
+                android:id="@+id/lnlpayment_drc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="15dp"
+                    app:tint="#676867"
+                    android:contentDescription="@string/description_info"
+                    app:srcCompat="@drawable/pay" />
+
+                <TextView
+                    android:id="@+id/txtpayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/payment"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Library -->
+            <LinearLayout
+                android:id="@+id/lnllibrary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="20dp"
+                    app:tint="#676867"
+                    android:contentDescription="@string/description_info"
+                    app:srcCompat="@drawable/ic_library"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <TextView
+                    android:id="@+id/txtlibrary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:text="@string/library"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Marks -->
+            <LinearLayout
+                android:id="@+id/lnlmarks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="20dp"
+                    android:contentDescription="@string/description_info"
+                    android:src="@drawable/marks_image" />
+
+                <TextView
+                    android:id="@+id/txtmarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/marks"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Transport -->
+            <LinearLayout
+                android:id="@+id/lnltransport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="20dp"
+                    app:tint="#676867"
+                    android:contentDescription="@string/description_info"
+                    android:src="@drawable/ic_bus" />
+
+                <TextView
+                    android:id="@+id/txttransport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/transport"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Leaves -->
+            <LinearLayout
+                android:id="@+id/lnlleaves"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="25dp"
+                    app:tint="#676867"
+                    android:contentDescription="@string/description_info"
+                    android:src="@drawable/leaves" />
+
+                <TextView
+                    android:id="@+id/txtleaves"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/das_leave"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Leave Management -->
+            <LinearLayout
+                android:id="@+id/lnlleavemanage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="25dp"
+                    app:tint="#676867"
+                    android:contentDescription="@string/description_info"
+                    android:src="@drawable/leaves" />
+
+                <TextView
+                    android:id="@+id/txtleavemanage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/das_leave_management"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Pocket Money -->
+            <LinearLayout
+                android:id="@+id/lnlpocket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="20dp"
+                    app:tint="#676867"
+                    android:contentDescription="@string/pocket_money"
+                    app:srcCompat="@drawable/pay" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/pocket_money"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnlstock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="22dp"
+                    app:tint="#676867"
+                    android:contentDescription="@string/stock_management"
+                    app:srcCompat="@drawable/ic_stock_box" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/stock_management"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lnlassets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="22dp"
+                    app:tint="#676867"
+                    android:contentDescription="@string/asset_monitoring"
+                    app:srcCompat="@drawable/ic_asset_building" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/asset_monitoring"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <!-- Cash Flow -->
+            <LinearLayout
+                android:id="@+id/lnlcashflow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_button_menu"
+                    android:padding="20dp"
+                    app:tint="#676867"
+                    android:contentDescription="@string/description_info"
+                    app:srcCompat="@drawable/pay" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/cash_flow"
+                    android:lines="2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </GridLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/txtstatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/powered_by"
+        android:layout_margin="10dp"
+        android:textColor="#252424" />
+
+</LinearLayout>

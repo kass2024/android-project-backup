@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".LeavesActivity">
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/leav_header"
+        android:textColor="@color/colorAccent"
+        android:textSize="26sp"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold" />
+    <LinearLayout
+        android:id="@+id/lnlnotif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+
+        android:background="#0A8FA7"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgnotif"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:tint="@color/colorWhite"
+            app:srcCompat="@drawable/info" />
+
+        <TextView
+            android:id="@+id/txtinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="KAMANA Laurent (Administrator)"
+            android:textColor="@color/colorWhite"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnrequest"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:textColor="#0A8FA7"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/logout"
+            android:text="@string/request" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/staff_hit_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+            <TextView android:id="@+id/kpiWait" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="#C2410C" android:textSize="22sp" android:textStyle="bold" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:text="@string/leave_waiting" android:textSize="11sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/staff_hit_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+            <TextView android:id="@+id/kpiOut" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="#9A3412" android:textSize="22sp" android:textStyle="bold" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:text="@string/leave_still_out" android:textSize="11sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/staff_hit_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+            <TextView android:id="@+id/kpiBack" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="#166534" android:textSize="22sp" android:textStyle="bold" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:text="@string/leave_back" android:textSize="11sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/staff_hit_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+            <TextView android:id="@+id/kpiUnused" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="#334155" android:textSize="22sp" android:textStyle="bold" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:text="@string/leave_not_used" android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="8dp"
+            android:scrollbars="vertical" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</LinearLayout>

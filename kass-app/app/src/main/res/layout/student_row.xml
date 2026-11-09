@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rowRoot"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imgabsent"
+        android:src="@drawable/close"
+        android:layout_gravity="center"
+        android:contentDescription="@string/atte_mark_absent"
+        android:background="@drawable/rounded_button_menu"
+        app:tint="@color/colorError"/>
+
+    <LinearLayout
+        android:id="@+id/lnlStudentInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/txtname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txtregno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txtrowstatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:textColor="@color/colorError"
+            android:text="@string/atte_absent_label" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="2dp"
+            android:background="#cdcdcd" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/imgpresent"
+        android:layout_gravity="center"
+        android:layout_marginStart="4dp"
+        android:padding="8dp"
+        android:visibility="gone"
+        android:src="@drawable/ic_checked_mark"
+        android:contentDescription="@string/atte_is_present"
+        android:backgroundTint="@color/main_green_stroke_color"
+        android:background="@drawable/rounded_button_menu"
+        android:tint="@color/main_green_stroke_color"/>
+
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:id="@+id/imgdelete"
+        android:layout_gravity="center"
+        android:layout_marginStart="4dp"
+        android:padding="5dp"
+        android:visibility="visible"
+        android:src="@drawable/ic_delete"
+        android:contentDescription="@string/atte_delete"
+        android:background="@drawable/rounded_button_menu"
+        app:tint="@color/colorError"/>
+
+</LinearLayout>

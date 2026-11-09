@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/btn_sync_now"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/menu_sync_bg"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingLeft="16dp"
+    android:paddingTop="10dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="10dp"
+    android:text="@string/sync_now"
+    android:textColor="@color/colorWhite"
+    android:textSize="13sp"
+    android:textStyle="bold" />

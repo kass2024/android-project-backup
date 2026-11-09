@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SmartSMS / XanderTech brand (matches schoolmis.xanderglobalacademy.com) -->
+    <color name="colorPrimary">#0B1220</color>
+    <color name="colorPrimaryDark">#0F172A</color>
+    <color name="colorGray">#64748B</color>
+    <color name="colorAccent">#0EA5E9</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWarning">#ea950c</color>
+    <color name="colorError">#e23606</color>
+    <color name="colorSuccess">#05bc42</color>
+    <color name="colorInfo">#38BDF8</color>
+    <color name="colorBlue">#0284C7</color>
+    <color name="divider">#E2E8F0</color>
+    <color name="icons">#FFF</color>
+    <color name="item_background">#FFF</color>
+    <color name="primary">#0B1220</color>
+    <color name="secondary">#0EA5E9</color>
+    <color name="accent">#38BDF8</color>
+    <color name="main_blue_color">#0284C7</color>
+    <color name="main_orange_color">#ea950c</color>
+    <color name="main_green_color">#05bc42</color>
+    <color name="main_green_stroke_color">#059669</color>
+    <color name="textPrimary">#0F172A</color>
+    <color name="textMuted">#64748B</color>
+    <color name="surface">#F8FAFC</color>
+    <color name="fieldBg">#FFFFFF</color>
+</resources>
