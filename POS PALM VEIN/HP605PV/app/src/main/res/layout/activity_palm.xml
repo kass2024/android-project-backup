@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top|center"
+    android:background="@color/white">
+
+    <com.hf.hp605pv.widget.EasyActionbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base"
+        android:id="@+id/actionbar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/bg"
+        android:layout_marginTop="10dp">
+        <SurfaceView
+            android:layout_width="480px"
+            android:layout_height="640px"
+            android:layout_centerInParent="true"
+            android:id="@+id/surface_view"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:columnCount="3">
+            <Button
+                android:layout_columnWeight="1"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:id="@+id/enroll"
+                android:enabled="false"
+                android:text="@string/enroll"
+                android:textColor="@color/white"
+                android:background="@drawable/base_button_selector">
+            </Button>
+            <Button
+                android:layout_columnWeight="1"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:id="@+id/user_list"
+                android:enabled="false"
+                android:text="@string/user_list"
+                android:textColor="@color/white"
+                android:background="@drawable/base_button_selector">
+            </Button>
+        </GridLayout>
+
+        <com.hf.hp605pv.widget.LogView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/log_view"/>
+
+    </LinearLayout>
+</LinearLayout>

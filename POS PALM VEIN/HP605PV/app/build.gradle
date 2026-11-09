@@ -1,0 +1,61 @@
+import java.text.SimpleDateFormat
+
+plugins {
+    id 'com.android.application'
+    id 'org.greenrobot.greendao'
+}
+
+android {
+    namespace 'com.hf.hp605pv'
+    compileSdk 30
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    defaultConfig {
+        applicationId "com.hf.hp605pv"
+        minSdk 24
+        targetSdk 30
+        versionCode 4
+        versionName "v1.0.3"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 自定义APK文件名
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "hp-605pv_${versionName}_${releaseTime()}.apk"
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+//获取时间
+static def releaseTime() {
+    return new SimpleDateFormat("yyyy-MM-dd-HH-mm", Locale.CHINA).format(new Date())
+}
+
+
+dependencies {
+    api fileTree(include: ['*.aar','*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+
+    //dialog
+    implementation 'com.github.li-xiaojun:XPopup:2.10.0'
+
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    //db
+    implementation 'org.greenrobot:greendao:3.3.0'
+    implementation 'io.github.yuweiguocn:GreenDaoUpgradeHelper:v2.2.1'
+}

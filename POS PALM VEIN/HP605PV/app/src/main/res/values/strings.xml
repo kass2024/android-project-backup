@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">HP-605PV</string>
+
+    <string name="welcome_to_">START</string>
+
+
+    <string name="palm">palm</string>
+    <string name="enroll">enroll</string>
+    <string name="verify">verify</string>
+    <string name="user_list">user list</string>
+    <string name="input_user_name">input user name</string>
+    <string name="show_me_your_hand">put palm for enroll</string>
+    <string name="delete">delete</string>
+    <string name="delete_user">delete user</string>
+    <string name="success">success</string>
+    <string name="clear">clear</string>
+
+    <string name="scan">scan</string>
+    <string name="trigger">trigger</string>
+    <string name="init_failed">init failed</string>
+
+    <string name="card_uid">card uid</string>
+    <string name="start_read">start read</string>
+
+    <string name="swipe_card">swipe card</string>
+    <string name="please_input_password">please input password</string>
+    <string name="Tdea">Tdea</string>
+    <string name="Aes">Aes</string>
+    <string name="Dukpt">Dukpt</string>
+    <string name="failed">failed</string>
+
+    <string name="insert_card">insert card</string>
+</resources>

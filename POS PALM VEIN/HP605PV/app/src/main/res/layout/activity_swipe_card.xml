@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.hf.hp605pv.widget.EasyActionbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/actionbar"
+        android:background="@color/base"/>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+<!--        <Button-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/base_button_click_selector"-->
+<!--            android:text="@string/Tdea"-->
+<!--            android:id="@+id/tdea"-->
+<!--            android:layout_margin="5dp"/>-->
+
+<!--        <Button-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/base_button_click_selector"-->
+<!--            android:text="@string/Aes"-->
+<!--            android:id="@+id/aes"-->
+<!--            android:layout_margin="5dp"/>-->
+
+<!--        <Button-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/base_button_click_selector"-->
+<!--            android:text="@string/Dukpt"-->
+<!--            android:id="@+id/dukpt"-->
+<!--            android:layout_margin="5dp"/>-->
+<!--    </LinearLayout>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.hf.hp605pv.widget.LogView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_above="@id/start"
+            android:id="@+id/log_view"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:id="@+id/start"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/base_button_click_selector"
+            android:text="@string/start_read"/>
+    </RelativeLayout>
+
+
+</LinearLayout>
