@@ -1,0 +1,22 @@
+# Generated and machine-local files
+**/build/
+**/.gradle/
+**/.idea/
+**/.kotlin/
+**/.cxx/
+**/captures/
+**/local.properties
+*.iml
+.DS_Store
+
+# Web install and build output
+**/node_modules/
+**/.next/
+
+# Signing keys and passwords
+**/*.jks
+**/*.keystore
+**/keystore.properties
+**/keystore/
+**/keys/
+pos.key
