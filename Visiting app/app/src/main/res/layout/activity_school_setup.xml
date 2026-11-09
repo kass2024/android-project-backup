@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navy"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <LinearLayout
+                android:layout_width="720dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_panel"
+                android:orientation="vertical"
+                android:padding="28dp">
+
+                <TextView
+                    android:id="@+id/langSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:background="@color/navy"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/kinyarwanda"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/setupLogo"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="4dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_card" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="@string/school_setup_title"
+                    android:textColor="@color/navy"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:text="@string/school_setup_hint"
+                    android:textColor="@color/muted"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/inputAcronym"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@color/surface"
+                    android:hint="@string/school_acronym"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapCharacters"
+                    android:padding="14dp"
+                    android:textSize="22sp" />
+
+                <EditText
+                    android:id="@+id/inputServer"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/surface"
+                    android:hint="@string/server_url"
+                    android:imeOptions="actionDone"
+                    android:inputType="textUri"
+                    android:padding="12dp"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/setupError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/danger"
+                    android:textSize="18sp"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btnContinue"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/navy"
+                    android:text="@string/continue_btn"
+                    android:textAllCaps="false"
+                    android:textSize="22sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.xander.visiting.SoftKeyboard
+        android:id="@+id/softKeyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
