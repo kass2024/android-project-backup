@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WISDOM SCHOOL RWANDA — HeyStar staff face guide</title>
+	<style>
+		body { font-family: Segoe UI, Arial, sans-serif; max-width: 760px; margin: 24px auto; padding: 0 16px 48px; color: #0f172a; line-height: 1.45; }
+		h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+		.sub { color: #475569; margin-bottom: 1.25rem; }
+		h2 { font-size: 1.15rem; margin-top: 1.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: .3rem; }
+		.ok { color: #166534; font-weight: 700; }
+		.bad { color: #b91c1c; font-weight: 700; }
+		code, .box { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
+		.card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 14px; margin: 10px 0; }
+		ol, ul { padding-left: 1.25rem; }
+		li { margin: .35rem 0; }
+		.light { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+		.g { background: #16a34a; }
+		.r { background: #dc2626; }
+	</style>
+</head>
+<body>
+	<h1>WISDOM SCHOOL RWANDA</h1>
+	<p class="sub">Staff face attendance on the HeyStar terminal — school ID <strong>27</strong></p>
+
+	<div class="card">
+		The screen should show the <strong>school name and logo</strong> and a live camera that is always ready. Do <strong>not</strong> tap Check-In / Check-Out. This machine is for <strong>staff faces only</strong>. Students use the Xander card scanner, not this camera. Stand in front of the camera as a live person. A printed photo should not clock attendance.
+	</div>
+
+	<h2>1. Clock IN or OUT (every day)</h2>
+	<ol>
+		<li>Walk up and look at the camera. Keep still for about one second. There is no direction button to press.</li>
+		<li><span class="light g"></span><span class="ok">Green light</span> = your face was found. The screen shows your name and <strong>IN</strong> or <strong>OUT</strong>, and the terminal speaks it. Xander uses your <strong>staff shift</strong> for late/overtime, same as the web attendance scanner.</li>
+		<li><span class="light r"></span><span class="bad">Red light</span> = not found. Do not keep retrying in a crowd. Ask an admin to register your face (section 2).</li>
+		<li>The first successful look of the day is <strong>IN</strong> (only one IN). Wait <strong>5 minutes</strong>, then later looks are <strong>OUT</strong> and replace the previous out time.</li>
+	</ol>
+
+	<h2>2. Register a staff face (admin, first time)</h2>
+	<ol>
+		<li>On Xander web: add the staff member first (they must already exist).</li>
+		<li>On a PC on the <strong>same school Wi‑Fi</strong>: School Settings → staff attendance / HeyStar → School ID <code>27</code> → <strong>Sync staff names to HeyStar</strong>.</li>
+		<li>On the terminal: tap the settings gear. Password: <code>123456</code>.</li>
+		<li>Open <strong>User Management</strong>. Find the staff name.</li>
+		<li>Choose <strong>register / capture face</strong>. The person looks at the camera until it saves.</li>
+		<li>Go back to the live camera screen and test: they should get a <span class="ok">green</span> light.</li>
+	</ol>
+
+	<h2>3. Lights</h2>
+	<ul>
+		<li><span class="light g"></span><strong>Green</strong> — staff found, clock saved to Xander.</li>
+		<li><span class="light r"></span><strong>Red</strong> — face not in this school’s list, not enrolled yet, or a photo/video instead of a live person.</li>
+	</ul>
+
+	<h2>4. Anti-cheat (3D liveness)</h2>
+	<p>Liveness is set to <strong>monocular anti-spoof</strong> with a tighter face-match score (72). A real enrolled person should get green. A printed picture should fail.</p>
+
+	<h2>5. School ID</h2>
+	<p>This terminal fetches and clocks <strong>WISDOM SCHOOL RWANDA</strong> using school ID <code>27</code> (acronym <code>WSR</code>).</p>
+	<p>To point the same machine at another school later: enter that school’s ID in Xander School Settings, save, then Sync from the school LAN.</p>
+
+	<h2>6. If something fails</h2>
+	<ul>
+		<li><strong>Always red:</strong> face not registered, or staff was added on the web after the last sync. Sync again, then register the face.</li>
+		<li><strong>Green but no report:</strong> check school Wi‑Fi. Clocks upload to <code>schoolmis.xanderglobalacademy.com</code> with <code>school_id=27</code>.</li>
+		<li><strong>Wrong school name/logo:</strong> Sync again from School Settings while the PC can reach the terminal IP.</li>
+		<li><strong>Settings:</strong> password <code>123456</code>. Communication password for the LAN API is also <code>123456</code>.</li>
+	</ul>
+
+	<p class="sub">XanderTech · HeyStar staff face · WISDOM SCHOOL RWANDA</p>
+</body>
+</html>

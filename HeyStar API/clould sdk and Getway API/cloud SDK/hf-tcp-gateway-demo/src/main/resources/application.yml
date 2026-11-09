@@ -1,0 +1,13 @@
+server:
+  port: 8080
+  servlet:
+    encoding:
+      force-response: true
+  tomcat:
+    max-http-form-post-size: -1
+spring:
+  application:
+    name: gateway-sdk-demo
+
+logging:
+  config: classpath:logback-spring.xml
