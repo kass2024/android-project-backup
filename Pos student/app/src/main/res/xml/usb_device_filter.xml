@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Card USB / DKCloudID HID reader -->
+    <usb-device vendor-id="1155" product-id="22315" />
+    <!-- Embedded Smart Pos X60 palm RGB (Usb Webcam) -->
+    <usb-device vendor-id="1287" product-id="1409" />
+    <!-- Embedded Smart Pos X60 palm IR (Sonix) -->
+    <usb-device vendor-id="11391" product-id="19040" />
+</resources>

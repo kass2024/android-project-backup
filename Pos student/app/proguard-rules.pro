@@ -1,0 +1,3 @@
+-keep class com.xinran.device.** { *; }
+-keep class com.xzy.pos.sdk.** { *; }
+-keep class com.pos.sdk.** { *; }
