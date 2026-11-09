@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xander Pocket Money — a short guide for parents</title>
+  <style>
+    :root {
+      --navy: #1565d8;
+      --ink: #1c2430;
+      --muted: #5c6570;
+      --gold: #c9961b;
+      --paper: #fbf7f0;
+      --line: #e6edf5;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; max-width: 100%; overflow-x: hidden; }
+    body {
+      font-family: "Segoe UI", Candara, Calibri, sans-serif;
+      color: var(--ink);
+      background: #eef3f8;
+      line-height: 1.45;
+    }
+    img { max-width: 100%; height: auto; }
+    html[data-lang="en"] .sw, html[data-lang="en"] .fr,
+    html[data-lang="sw"] .en, html[data-lang="sw"] .fr,
+    html[data-lang="fr"] .en, html[data-lang="fr"] .sw { display: none !important; }
+    a { color: var(--navy); }
+    .bar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      padding-top: max(10px, env(safe-area-inset-top));
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: flex; align-items: center; gap: 8px; min-width: 0; font-weight: 800; letter-spacing: .04em; font-size: 14px; }
+    .brand span { color: var(--gold); }
+    .mark { width: 32px; height: 32px; border-radius: 8px; display: block; flex: none; }
+    .tools { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end; min-width: 0; }
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .lang { background: #e8f1ff; color: var(--navy); }
+    .lang.active { background: var(--navy); color: #fff; }
+    .pdf { background: linear-gradient(90deg, #e0b44a, #c9961b); color: #fff; }
+    .sheet { max-width: 880px; margin: 16px auto 32px; padding: 0 12px; padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+    .cover {
+      background: linear-gradient(160deg, #1d4ed8 0%, #1565d8 55%, #0f4ec0 100%);
+      color: #fff;
+      border-radius: 18px;
+      padding: 20px 16px 16px;
+      overflow: hidden;
+    }
+    .eyebrow { letter-spacing: .12em; text-transform: uppercase; font-size: 12px; font-weight: 700; opacity: .85; }
+    .cover h1 { font-size: clamp(26px, 7.2vw, 34px); line-height: 1.12; margin: 8px 0; max-width: 16ch; overflow-wrap: anywhere; }
+    .cover p { max-width: 42ch; margin: 0; font-size: 16px; }
+    .site {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 100%;
+      margin-top: 14px;
+      background: #fff;
+      color: var(--navy);
+      font-weight: 800;
+      border-radius: 16px;
+      padding: 6px 12px 6px 6px;
+      text-decoration: none;
+      font-size: 13px;
+    }
+    .site span { min-width: 0; overflow-wrap: anywhere; }
+    .site img { width: 32px; height: 32px; border-radius: 8px; display: block; }
+    .note {
+      margin-top: 12px;
+      background: #fff;
+      border-radius: 14px;
+      padding: 10px 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items: start;
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px;
+      margin-top: 12px;
+      min-width: 0;
+    }
+    .num {
+      display: inline-grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #f8e7c3;
+      color: #8a6410;
+      font-weight: 800;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    h2 { margin: 0 0 6px; font-size: 22px; line-height: 1.15; }
+    .copy p, .copy li { margin: 0 0 6px; color: #3c4450; }
+    ol, ul { margin: 6px 0 0; padding-left: 18px; }
+    .device {
+      width: min(168px, 46vw);
+      max-height: 280px;
+      margin: 0 auto;
+      border: 6px solid #1c2430;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #f4f7fb;
+    }
+    .device img { width: 100%; height: auto; display: block; }
+    .caption { color: var(--muted); font-size: 12px; margin-top: 6px; text-align: center; }
+    .tips { background: var(--paper); border-radius: 18px; padding: 16px 18px; margin-top: 12px; }
+    .tips h2 { font-size: 20px; }
+    .tips li { margin: 4px 0; }
+    @media (max-width: 420px) {
+      .tools { width: 100%; justify-content: flex-start; }
+      button { padding: 8px 10px; font-size: 13px; }
+    }
+    @media (min-width: 760px) {
+      .cover { border-radius: 22px; padding: 28px 28px 24px; }
+      .step { grid-template-columns: minmax(0, 1fr) 180px; padding: 16px 18px; }
+      .bar { flex-wrap: nowrap; padding-left: 16px; padding-right: 16px; }
+    }
+    @media print {
+      @page { size: A4 portrait; margin: 12mm; }
+      html, body {
+        background: #fff !important;
+        color: #1c2430 !important;
+        overflow: visible !important;
+        max-width: none !important;
+        width: auto !important;
+        height: auto !important;
+      }
+      .bar { display: none !important; }
+      .sheet {
+        max-width: none;
+        width: auto;
+        margin: 0;
+        padding: 0;
+      }
+      .cover {
+        background: #fff !important;
+        color: #1c2430 !important;
+        border: 1.25pt solid #1565d8;
+        border-radius: 2mm;
+        padding: 5mm 6mm;
+        margin: 0 0 4mm;
+        overflow: visible;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .cover h1 { font-size: 16pt; max-width: none; color: #1c2430; }
+      .eyebrow { color: #1565d8; opacity: 1; }
+      .cover p, .note, .copy p, .copy li { font-size: 10.5pt; color: #1c2430; }
+      .site {
+        color: #1565d8 !important;
+        background: #fff !important;
+        border: 0.6pt solid #1565d8;
+      }
+      .note, .step, .tips, figure {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .note {
+        margin: 0 0 3mm;
+        padding: 0 0 2mm;
+        border-bottom: 0.4pt solid #d5dde6;
+        background: transparent;
+      }
+      .step {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        margin: 0 0 5mm;
+        padding: 0 0 4mm;
+        border: 0;
+        border-bottom: 0.4pt solid #d5dde6;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        overflow: visible;
+      }
+      .tips {
+        display: block;
+        margin: 0;
+        padding: 0;
+        background: transparent;
+      }
+      .copy, figure { min-width: 0; max-width: 100%; overflow: visible; }
+      figure { margin: 3mm 0 0; text-align: center; }
+      .device {
+        width: 32mm;
+        max-height: none;
+        margin: 0 auto;
+        border-width: 0.35mm;
+        border-radius: 2.5mm;
+        overflow: hidden;
+      }
+      .device img {
+        width: 100%;
+        height: auto;
+        max-height: 52mm;
+        object-fit: contain;
+        object-position: top center;
+      }
+      h2 { font-size: 13pt; }
+      ol, ul { padding-left: 5mm; }
+    }
+  </style>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const asked = params.get("lang");
+    if (asked === "sw" || asked === "rw") document.documentElement.dataset.lang = "sw";
+    else if (asked === "fr") document.documentElement.dataset.lang = "fr";
+    function setLang(code) {
+      const next = code === "sw" || code === "rw" ? "sw" : code === "fr" ? "fr" : "en";
+      document.documentElement.dataset.lang = next;
+      document.documentElement.lang = next;
+      document.querySelectorAll("[data-set-lang]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.setLang === next);
+      });
+    }
+    function savePdf() { window.print(); }
+    window.addEventListener("DOMContentLoaded", () => setLang(document.documentElement.dataset.lang || "en"));
+  </script>
+</head>
+<body>
+  <div class="bar">
+    <div class="brand"><img class="mark" src="xander-logo.jpg" alt="Xander" /> XANDER <span>Pocket Money</span></div>
+    <div class="tools">
+      <button class="lang active" data-set-lang="en" onclick="setLang('en')">English</button>
+      <button class="lang" data-set-lang="sw" onclick="setLang('sw')">Kiswahili</button>
+      <button class="lang" data-set-lang="fr" onclick="setLang('fr')">Français</button>
+      <button class="pdf" onclick="savePdf()"><span class="en">Save as PDF</span><span class="sw">Hifadhi PDF</span><span class="fr">Enregistrer en PDF</span></button>
+    </div>
+  </div>
+  <main class="sheet">
+    <header class="cover">
+      <div class="eyebrow en">A short guide for parents</div>
+      <div class="eyebrow sw">Mwongozo mfupi kwa wazazi</div>
+      <div class="eyebrow fr">Un court guide pour les parents</div>
+      <h1 class="en">Send pocket money onto a student card</h1>
+      <h1 class="sw">Tuma pesa za mfukoni kwenye kadi ya mwanafunzi</h1>
+      <h1 class="fr">Envoyer l'argent de poche sur la carte d'un élève</h1>
+      <p class="en">Five steps. The same account also works in the phone app.</p>
+      <p class="sw">Hatua tano. Akaunti hiyo hiyo inafanya kazi pia kwenye programu ya simu.</p>
+      <p class="fr">Cinq étapes. Le même compte fonctionne aussi dans l'application du téléphone.</p>
+      <a class="site" href="https://pocketmoney.xanderglobalacademy.com"><img src="xander-logo.jpg" alt="Xander" /><span>pocketmoney.xanderglobalacademy.com</span></a>
+    </header>
+    <p class="note en">The names and amounts in the pictures are examples. Your own students appear after you sign in.</p>
+    <p class="note sw">Majina na kiasi kwenye picha ni mifano. Wanafunzi wako wataonekana baada ya kuingia.</p>
+    <p class="note fr">Les noms et les montants sur les images sont des exemples. Vos élèves apparaissent après la connexion.</p>
+
+    <section class="step">
+      <div class="copy">
+        <div class="num">1</div>
+        <h2 class="en">Choose a language</h2>
+        <h2 class="sw">Chagua lugha</h2>
+        <h2 class="fr">Choisir une langue</h2>
+        <p class="en">Open the link. Tap <strong>English</strong>, <strong>Kiswahili</strong>, or <strong>Français</strong>, then <strong>Continue</strong>.</p>
+        <p class="sw">Fungua kiungo. Gusa <strong>Kiingereza</strong>, <strong>Kiswahili</strong>, au <strong>Kifaransa</strong>, kisha <strong>Endelea</strong>.</p>
+        <p class="fr">Ouvrez le lien. Touchez <strong>Anglais</strong>, <strong>Kiswahili</strong> ou <strong>Français</strong>, puis <strong>Continuer</strong>.</p>
+      </div>
+      <figure>
+        <div class="device"><img class="en" src="shots/welcome-en.png" alt="Welcome screen in English" /><img class="sw" src="shots/welcome-en.png" alt="Skrini ya kukaribisha kwa Kiswahili" /><img class="fr" src="shots/welcome-en.png" alt="Écran d'accueil" /></div>
+        <div class="caption en">Welcome</div>
+        <div class="caption sw">Karibu</div>
+        <div class="caption fr">Accueil</div>
+      </figure>
+    </section>
+
+    <section class="step">
+      <div class="copy">
+        <div class="num">2</div>
+        <h2 class="en">Sign in</h2>
+        <h2 class="sw">Ingia</h2>
+        <h2 class="fr">Se connecter</h2>
+        <ol class="en">
+          <li>Type your phone number and your 4-digit PIN, then tap <strong>Sign in</strong>.</li>
+          <li>New here? Tap <strong>Create an account</strong>. Enter your name, a valid Rwandan phone number, and a PIN. The account opens straight away.</li>
+          <li>Forgot the PIN? Tap <strong>Forgot PIN?</strong> and use the SMS code to choose a new one. Do not open a second account.</li>
+        </ol>
+        <ol class="sw">
+          <li>Weka nambari ya simu na PIN ya tarakimu 4, kisha gusa <strong>Ingia</strong>.</li>
+          <li>Mgeni hapa? Gusa <strong>Fungua akaunti</strong>. Weka jina, nambari halali ya simu ya Rwanda, na PIN. Akaunti inafunguka mara moja.</li>
+          <li>Umesahau PIN? Gusa <strong>Umesahau PIN?</strong> na utumie nambari ya SMS kuchagua mpya. Usifungue akaunti ya pili.</li>
+        </ol>
+        <ol class="fr">
+          <li>Saisissez votre numéro de téléphone et votre code PIN à 4 chiffres, puis touchez <strong>Se connecter</strong>.</li>
+          <li>Nouveau ici ? Touchez <strong>Créer un compte</strong>. Entrez votre nom, un numéro rwandais valide et un PIN. Le compte s'ouvre tout de suite.</li>
+          <li>PIN oublié ? Touchez <strong>PIN oublié ?</strong> et utilisez le code SMS pour en choisir un nouveau. N'ouvrez pas un second compte.</li>
+        </ol>
+      </div>
+      <figure>
+        <div class="device"><img class="en" src="shots/signin-en.png" alt="Sign-in screen" /><img class="sw" src="shots/signin-en.png" alt="Skrini ya kuingia" /><img class="fr" src="shots/signin-en.png" alt="Écran de connexion" /></div>
+        <div class="caption en">Sign in</div>
+        <div class="caption sw">Ingia</div>
+        <div class="caption fr">Connexion</div>
+      </figure>
+    </section>
+
+    <section class="step">
+      <div class="copy">
+        <div class="num">3</div>
+        <h2 class="en">See your students</h2>
+        <h2 class="sw">Angalia wanafunzi wako</h2>
+        <h2 class="fr">Voir vos élèves</h2>
+        <p class="en">Home shows your name and the total on the cards. Each student shows the class, the school, and the <strong>card balance</strong>. The card number is never shown.</p>
+        <p class="sw">Mwanzo unaonyesha jina lako na jumla iliyo kwenye kadi. Kila mwanafunzi anaonyesha darasa, shule, na <strong>salio la kadi</strong>. Nambari ya kadi haionekani.</p>
+        <p class="fr">L'accueil affiche votre nom et le total sur les cartes. Chaque élève montre la classe, l'école et le <strong>solde de la carte</strong>. Le numéro de carte n'est jamais affiché.</p>
+        <p class="en">To add a student, tap <strong>Add another student</strong> and type the registration number. Only a student who is in a class can be found.</p>
+        <p class="sw">Kuongeza mwanafunzi, gusa <strong>Ongeza mwanafunzi mwingine</strong> na uweke nambari ya usajili. Anayepatikana ni mwanafunzi aliye kwenye darasa tu.</p>
+        <p class="fr">Pour ajouter un élève, touchez <strong>Ajouter un autre élève</strong> et saisissez le numéro d'inscription. Seul un élève qui est dans une classe peut être trouvé.</p>
+      </div>
+      <figure>
+        <div class="device"><img class="en" src="shots/home-en.png" alt="Home with a student card" /><img class="sw" src="shots/home-en.png" alt="Mwanzo na kadi ya mwanafunzi" /><img class="fr" src="shots/home-en.png" alt="Accueil avec une carte élève" /></div>
+        <div class="caption en">Home</div>
+        <div class="caption sw">Mwanzo</div>
+        <div class="caption fr">Accueil</div>
+      </figure>
+    </section>
+
+    <section class="step">
+      <div class="copy">
+        <div class="num">4</div>
+        <h2 class="en">Send money</h2>
+        <h2 class="sw">Tuma pesa</h2>
+        <h2 class="fr">Envoyer de l'argent</h2>
+        <ol class="en">
+          <li>Tap <strong>Send money</strong> on the student.</li>
+          <li>Type any whole amount. The smallest is <strong>200 RWF</strong> and the largest is <strong>500,000 RWF</strong>.</li>
+          <li>Payment is <strong>MTN MoMo</strong> only. Check the phone number, then approve the message on that phone.</li>
+        </ol>
+        <ol class="sw">
+          <li>Gusa <strong>Tuma pesa</strong> kwenye mwanafunzi.</li>
+          <li>Weka kiasi chochote kamili. Kidogo zaidi ni <strong>200 RWF</strong> na kikubwa zaidi ni <strong>500,000 RWF</strong>.</li>
+          <li>Malipo ni <strong>MTN MoMo</strong> tu. Hakiki nambari, kisha idhinishe ujumbe kwenye simu hiyo.</li>
+        </ol>
+        <ol class="fr">
+          <li>Touchez <strong>Envoyer de l'argent</strong> sur l'élève.</li>
+          <li>Saisissez n'importe quel montant entier. Le minimum est <strong>200 RWF</strong> et le maximum est <strong>500 000 RWF</strong>.</li>
+          <li>Le paiement se fait uniquement par <strong>MTN MoMo</strong>. Vérifiez le numéro, puis approuvez le message sur ce téléphone.</li>
+        </ol>
+        <p class="en">At the canteen the student only taps the card. There is no student PIN. If the school has not saved a card, you cannot send money yet.</p>
+        <p class="sw">Katika kantini, mwanafunzi anatumia kadi tu. Hakuna PIN ya mwanafunzi. Ikiwa shule haijahifadhi kadi, bado huwezi kutuma pesa.</p>
+        <p class="fr">À la cantine, l'élève présente seulement la carte. Il n'y a pas de PIN élève. Si l'école n'a pas enregistré de carte, vous ne pouvez pas encore envoyer d'argent.</p>
+      </div>
+      <figure>
+        <div class="device"><img src="shots/pay.png" alt="Send money screen" /></div>
+        <div class="caption en">Send money</div>
+        <div class="caption sw">Tuma pesa</div>
+        <div class="caption fr">Envoi</div>
+      </figure>
+    </section>
+
+    <section class="step">
+      <div class="copy">
+        <div class="num">5</div>
+        <h2 class="en">Activity and sign out</h2>
+        <h2 class="sw">Shughuli na kutoka</h2>
+        <h2 class="fr">Activité et déconnexion</h2>
+        <p class="en">Tap <strong>Activity</strong> to see what moved on the card. Green <strong>+</strong> is money you added. Red <strong>−</strong> is money spent, usually at the canteen.</p>
+        <p class="sw">Gusa <strong>Shughuli</strong> kuona kilichosogea kwenye kadi. <strong>+</strong> ya kijani ni pesa ulizoongeza. <strong>−</strong> nyekundu ni pesa zilizotumika, mara nyingi kantini.</p>
+        <p class="fr">Touchez <strong>Activité</strong> pour voir les mouvements sur la carte. Le <strong>+</strong> vert est l'argent ajouté. Le <strong>−</strong> rouge est l'argent dépensé, souvent à la cantine.</p>
+        <p class="en">The red <strong>Sign out</strong> row is on Home. This browser stays signed in until you tap it.</p>
+        <p class="sw">Mstari mwekundu wa <strong>Toka</strong> uko Mwanzo. Kivinjari hiki kinabaki kimeingia hadi uguse.</p>
+        <p class="fr">La ligne rouge <strong>Se déconnecter</strong> est sur l'accueil. Ce navigateur reste connecté jusqu'à ce que vous la touchiez.</p>
+      </div>
+      <figure>
+        <div class="device"><img src="shots/activity.png" alt="Recent activity" /></div>
+        <div class="caption en">Activity</div>
+        <div class="caption sw">Shughuli</div>
+        <div class="caption fr">Activité</div>
+      </figure>
+    </section>
+
+    <section class="tips">
+      <h2 class="en">If something does not work</h2>
+      <h2 class="sw">Ikiwa kitu hakifanyi kazi</h2>
+      <h2 class="fr">Si quelque chose ne marche pas</h2>
+      <ul class="en">
+        <li>Wrong PIN: use <strong>Forgot PIN?</strong> and the SMS code.</li>
+        <li>No SMS: wait a moment, check the number, and send the code again.</li>
+        <li>Student not found: check the registration number, and that the student is in a class.</li>
+        <li>Payment not approved: the money is not taken. Send it again when you can approve the phone message.</li>
+      </ul>
+      <ul class="sw">
+        <li>PIN si sahihi: tumia <strong>Umesahau PIN?</strong> na nambari ya SMS.</li>
+        <li>Hakuna SMS: subiri kidogo, hakiki nambari, kisha tuma tena nambari.</li>
+        <li>Mwanafunzi hajapatikana: hakiki nambari ya usajili, na kwamba mwanafunzi yuko kwenye darasa.</li>
+        <li>Malipo hayajaidhinishwa: pesa hazikatwi. Tuma tena unapoweza kuidhinisha ujumbe wa simu.</li>
+      </ul>
+      <ul class="fr">
+        <li>Mauvais PIN : utilisez <strong>PIN oublié ?</strong> et le code SMS.</li>
+        <li>Pas de SMS : attendez un instant, vérifiez le numéro, puis renvoyez le code.</li>
+        <li>Élève introuvable : vérifiez le numéro d'inscription et que l'élève est dans une classe.</li>
+        <li>Paiement non approuvé : l'argent n'est pas prélevé. Renvoyez-le lorsque vous pouvez approuver le message.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
