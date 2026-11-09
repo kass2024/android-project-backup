@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <!-- TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello" /> -->
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width ="fill_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/tv_Text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="file path: "
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="/sdcard/tts.txt"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:layout_toRightOf="@+id/tv_Text1"
+            android:inputType="textPersonName" >
+
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linespeed"
+        android:layout_width ="100dip"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        >
+
+        <TextView
+            android:id="@+id/tv_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="speed: "
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextspeed"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:layout_toRightOf="@+id/tv_speed"
+            android:inputType="number" >
+
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linevolume"
+        android:layout_width ="100dip"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linespeed"
+        >
+        <TextView
+            android:id="@+id/tv_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="volume: "
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextvolume"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:layout_toRightOf="@+id/tv_volume"
+            android:inputType="number" >
+
+        </EditText>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/line0"
+        android:layout_width ="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linevolume"
+        >
+        <Button
+            android:id="@+id/chose"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="select file"
+            android:onClick="onClick" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/line2"
+        android:layout_width ="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line0"
+        >
+        <Button
+            android:id="@+id/synth"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            android:onClick="onClick" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line6"
+        android:layout_width ="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line5"
+        >
+        <Button
+            android:id="@+id/btnPause"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Pause"
+            android:onClick="onClick"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line7"
+        android:layout_width ="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line6"
+        >
+        <Button
+            android:id="@+id/btnResume"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Resume"
+            android:onClick="onClick"/>
+    </LinearLayout>
+
+</LinearLayout>

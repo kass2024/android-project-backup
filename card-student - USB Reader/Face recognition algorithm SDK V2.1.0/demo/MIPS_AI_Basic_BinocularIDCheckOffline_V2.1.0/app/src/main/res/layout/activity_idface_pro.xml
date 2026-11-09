@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/activity_main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#292421"
+tools:context="com.example.mips.mipsfacedetectdemo.IDFaceProActivity">
+
+
+    <LinearLayout
+        android:id="@+id/pose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/camera_resolution"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:text="resolution of camera"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_camera_w"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:text="width of preview: "
+        android:layout_below="@+id/pose"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_camera_w"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/pose"
+        android:layout_toRightOf="@+id/tv_camera_w"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:inputType="number"
+        android:text="640"
+        />
+
+    <TextView
+        android:id="@+id/tv_camera_h"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:text="height of preview: "
+        android:layout_below="@+id/tv_camera_w"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_camera_h"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_camera_w"
+        android:layout_toRightOf="@+id/tv_camera_h"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:inputType="number"
+        android:text="480"
+        />
+
+    <TextView
+        android:id="@+id/tv_licpath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:text="path of license file: "
+        android:layout_below="@+id/ET_camera_h"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_licpath"
+        android:layout_width="200px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_licpath"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:text="/sdcard/mipsLic/mipsAi.lic"
+        />
+
+    <TextView
+        android:id="@+id/tv_pic_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:text="display : "
+        android:layout_below="@+id/ET_licpath"
+        android:textSize="20sp" />
+    <CheckBox
+        android:id="@+id/CB_pic_display"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ET_licpath"
+        android:layout_toRightOf="@+id/tv_pic_display"
+        />
+
+    <Button
+        android:id="@+id/bt_start"
+        android:textColor="#000000"
+        android:color="#802A2A"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="start"
+        android:textSize="15sp"
+        android:layout_below="@+id/tv_pic_display" />
+    <Button
+        android:id="@+id/bt_disp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="displaying"
+        android:textColor="#000000"
+        android:color="#802A2A"
+        android:textSize="15sp"
+        android:layout_below="@+id/tv_pic_display"
+        android:layout_toRightOf="@+id/bt_start"/>
+
+    <TextView
+        android:id="@+id/tv_orientation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="orientation ："
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/bt_start" />
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cam_orientation"
+        android:gravity="left"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_toRightOf="@+id/tv_orientation"
+        android:layout_below="@+id/bt_start"
+        />
+
+    <TextView
+        android:id="@+id/tv_VIP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VIP recognition: "
+        android:layout_below="@+id/tv_orientation"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <CheckBox
+        android:id="@+id/CB_VIP"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_orientation"
+        android:layout_toRightOf="@+id/tv_VIP"
+        />
+
+    <TextView
+        android:id="@+id/tv_FACEATTR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="liveness detection: "
+        android:layout_below="@+id/tv_VIP"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <CheckBox
+        android:id="@+id/CB_faceattr"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_VIP"
+        android:layout_toRightOf="@+id/tv_FACEATTR"
+        />
+
+    <TextView
+        android:id="@+id/tv_refreshattr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="liveness refresh: "
+        android:layout_below="@+id/tv_FACEATTR"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <CheckBox
+        android:id="@+id/CB_refreshattr"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_FACEATTR"
+        android:layout_toRightOf="@+id/tv_refreshattr"
+        />
+    <TextView
+        android:id="@+id/tv_FACEATTRYM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="attributes check: "
+        android:layout_below="@+id/tv_refreshattr"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:visibility="gone"/>
+    <CheckBox
+        android:id="@+id/CB_faceattrYM"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_refreshattr"
+        android:layout_toRightOf="@+id/tv_FACEATTR"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/tv_refreshVIP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VIP refresh: "
+        android:layout_below="@+id/tv_refreshattr"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <CheckBox
+        android:id="@+id/CB_refreshVIP"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_refreshattr"
+        android:layout_toRightOf="@+id/tv_refreshVIP"
+        />
+
+    <TextView
+        android:id="@+id/tv_live_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="liveness mode: "
+        android:layout_below="@+id/tv_refreshVIP"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:visibility="gone"/>
+    <EditText
+        android:id="@+id/ET_live_mode"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_refreshVIP"
+        android:layout_toRightOf="@+id/tv_live_mode"
+        android:textSize="15sp"
+        android:inputType="number"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_yaw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="yaw angle: "
+        android:layout_below="@+id/tv_live_mode"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_YAW"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_live_mode"
+        android:layout_toRightOf="@+id/tv_yaw"
+        android:textSize="15sp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv_pitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pitch angle: "
+        android:layout_below="@+id/tv_yaw"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_pitch"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_yaw"
+        android:layout_toRightOf="@+id/tv_pitch"
+        android:textSize="15sp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv_roll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="roll angle: "
+        android:layout_below="@+id/tv_pitch"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_roll"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_pitch"
+        android:layout_toRightOf="@+id/tv_roll"
+        android:textSize="15sp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv_track_cnt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="face number: "
+        android:layout_below="@+id/tv_roll"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_track_cnt"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_roll"
+        android:layout_toRightOf="@+id/tv_track_cnt"
+        android:textSize="15sp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv_face_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="face score: "
+        android:layout_below="@+id/tv_track_cnt"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_face_score"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_track_cnt"
+        android:layout_toRightOf="@+id/tv_face_score"
+        android:textSize="15sp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv_similarity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="similarity score: "
+        android:layout_below="@+id/tv_face_score"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_similarity"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_face_score"
+        android:layout_toRightOf="@+id/tv_similarity"
+        android:textSize="15sp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv_LivenessThreshold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="liveness score: "
+        android:layout_below="@+id/tv_similarity"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_LivenessThreshold"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_similarity"
+        android:layout_toRightOf="@+id/tv_LivenessThreshold"
+        android:textSize="15sp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv_FaceWidth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="width of face for detection: "
+        android:layout_below="@+id/tv_LivenessThreshold"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_FaceWidth"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_LivenessThreshold"
+        android:layout_toRightOf="@+id/tv_FaceWidth"
+        android:textSize="15sp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv_PicFaceWidth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="min width of face in image: "
+        android:layout_below="@+id/tv_FaceWidth"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_PicFaceWidth"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_FaceWidth"
+        android:layout_toRightOf="@+id/tv_PicFaceWidth"
+        android:textSize="15sp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/tv_liveness_facewidth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="width of face in liveness mode: "
+        android:layout_below="@+id/tv_PicFaceWidth"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_liveness_facewidth"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_PicFaceWidth"
+        android:layout_toRightOf="@+id/tv_liveness_facewidth"
+        android:textSize="15sp"
+        android:inputType="number"/>
+
+    <Button
+        android:id="@+id/bt_set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="set"
+        android:textColor="@drawable/bt_color"
+        android:color="#802A2A"
+        android:textSize="15sp"
+        android:layout_below="@+id/tv_liveness_facewidth" />
+    <Button
+        android:id="@+id/bt_get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get"
+        android:textColor="#000000"
+        android:color="#802A2A"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/bt_set"
+        android:layout_below="@+id/tv_liveness_facewidth" />
+
+    <TextView
+        android:id="@+id/tv_addface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="enroll VIP:"
+        android:layout_below="@+id/bt_set"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_vipIDAdd"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/bt_set"
+        android:layout_toRightOf="@+id/tv_addface"
+        android:textSize="15sp"
+        android:inputType="number"/>
+    <Button
+        android:id="@+id/bt_getfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="select file"
+        android:textColor="#000000"
+        android:color="#802A2A"
+        android:textSize="15sp"
+        android:layout_below="@+id/tv_addface" />
+    <Button
+        android:id="@+id/bt_addface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textColor="#000000"
+        android:color="#802A2A"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/bt_getfile"
+        android:layout_below="@+id/tv_addface" />
+
+    <EditText
+        android:id="@+id/ET_vipImagePath"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/bt_getfile"
+        android:text="/sdcard/imageVIP"
+        android:textSize="15sp"/>
+    <Button
+        android:id="@+id/bt_batchVipAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="bulk enroll"
+        android:textColor="#000000"
+        android:color="#802A2A"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/ET_vipImagePath"
+        android:layout_below="@+id/bt_getfile" />
+
+    <TextView
+        android:id="@+id/tv_deletevip"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="delete VIP:"
+        android:layout_below="@+id/ET_vipImagePath"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_deletevip"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_deletevip"
+        android:textSize="15sp"
+        android:inputType="number"/>
+    <Button
+        android:id="@+id/bt_deletevip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="delete"
+        android:textColor="#000000"
+        android:color="#802A2A"
+        android:textSize="15sp"
+        android:layout_below="@+id/tv_deletevip"
+        android:layout_toRightOf="@+id/ET_deletevip"/>
+
+    <TextView
+        android:id="@+id/tv_verifyPic"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="check image:"
+        android:layout_below="@+id/ET_deletevip"
+        android:textSize="20sp" />
+    <Button
+        android:id="@+id/bt_verifyPicSel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="select image"
+        android:textColor="#000000"
+        android:color="#802A2A"
+        android:textSize="15sp"
+        android:layout_below="@+id/tv_verifyPic"/>
+    <Button
+        android:id="@+id/bt_verify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="verify"
+        android:textColor="#000000"
+        android:color="#802A2A"
+        android:textSize="15sp"
+        android:layout_below="@+id/tv_verifyPic"
+        android:layout_toRightOf="@+id/bt_verifyPicSel"/>
+
+    <Button
+        android:id="@+id/bt_export"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="export device info"
+        android:textColor="#000000"
+        android:color="#802A2A"
+        android:textSize="15sp"
+        android:layout_below="@+id/bt_verify"/>
+
+    <TextView
+        android:id="@+id/tv_AlgorithmInfo"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="info of algorithm"
+        android:layout_below="@+id/bt_export"
+        android:textSize="15sp" />
+
+    <FrameLayout
+        android:layout_toRightOf="@+id/bt_disp"
+        android:layout_width="320px"
+        android:layout_height="240px"
+        android:id="@+id/frame_camera_ir"
+        android:scaleType="fitXY"
+        >
+        <SurfaceView
+            android:id="@+id/surfaceViewCameraIR"
+            android:layout_gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </SurfaceView>
+    </FrameLayout>
+
+     <ImageView
+        android:id="@+id/capture_photo0"
+        android:layout_toRightOf="@+id/frame_camera_ir"
+        android:layout_width="240px"
+        android:layout_height="180px"
+        android:src="@mipmap/ic_launcher"/>
+    <ImageView
+        android:id="@+id/capture_photo1"
+        android:layout_toRightOf="@+id/capture_photo0"
+        android:layout_width="240px"
+        android:layout_height="180px"
+        android:src="@mipmap/ic_launcher"/>
+    <ImageView
+        android:id="@+id/capture_photo2"
+        android:layout_toRightOf="@+id/capture_photo1"
+        android:layout_width="240px"
+        android:layout_height="180px"
+        android:src="@mipmap/ic_launcher"/>
+    <ImageView
+        android:id="@+id/capture_photo3"
+        android:layout_toRightOf="@+id/capture_photo2"
+        android:layout_width="240px"
+        android:layout_height="180px"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/tv_saveFacePic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="save crop face file"
+        android:layout_toRightOf="@+id/capture_photo3"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <CheckBox
+        android:id="@+id/CB_saveFacePic"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_saveFacePic"/>
+
+    <TextView
+        android:id="@+id/tv_facesavepath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Path : "
+        android:layout_toRightOf="@+id/capture_photo3"
+        android:layout_below="@+id/tv_saveFacePic"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_facesavepath"
+        android:textColor="#FFFFFF"
+        android:layout_width="200px"
+        android:layout_height="40px"
+        android:layout_toRightOf="@+id/tv_facesavepath"
+        android:layout_below="@+id/tv_saveFacePic"
+        android:text="/sdcard/colorpaper/20190301/"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/tv_realFace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="live face？ "
+        android:layout_below="@+id/tv_facesavepath"
+        android:layout_toRightOf="@+id/capture_photo3"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <CheckBox
+        android:id="@+id/CB_realFace"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_facesavepath"
+        android:layout_toRightOf="@+id/tv_realFace"
+        />
+    <TextView
+        android:id="@+id/tv_idbase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SN: "
+        android:layout_below="@+id/tv_realFace"
+        android:layout_toRightOf="@+id/capture_photo3"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/ET_idbase"
+        android:textColor="#FFFFFF"
+        android:layout_width="80px"
+        android:layout_height="40px"
+        android:layout_below="@+id/tv_realFace"
+        android:layout_toRightOf="@+id/tv_idbase"
+        android:text="0"
+        android:textSize="15sp"
+        android:inputType="number"/>
+    <TextView
+        android:id="@+id/tv_istest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test mode"
+        android:layout_below="@+id/tv_idbase"
+        android:layout_toRightOf="@+id/capture_photo3"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+    <CheckBox
+        android:id="@+id/CB_istest"
+        android:textColor="#FFFFFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_idbase"
+        android:layout_toRightOf="@+id/tv_istest"
+        />
+
+
+    <ImageView
+        android:id="@+id/vip_photo0"
+        android:layout_below="@+id/frame_camera_ir"
+        android:layout_toRightOf="@+id/bt_disp"
+        android:layout_width="240px"
+        android:layout_height="180px"
+        android:src="@mipmap/ic_launcher"/>
+    <ImageView
+        android:id="@+id/vip_photo1"
+        android:layout_below="@+id/vip_photo0"
+        android:layout_toRightOf="@+id/bt_disp"
+        android:layout_width="240px"
+        android:layout_height="180px"
+        android:src="@mipmap/ic_launcher"/>
+    <ImageView
+        android:id="@+id/vip_photo2"
+        android:layout_below="@+id/vip_photo1"
+        android:layout_toRightOf="@+id/bt_disp"
+        android:layout_width="240px"
+        android:layout_height="180px"
+        android:src="@mipmap/ic_launcher"/>
+    <ImageView
+        android:id="@+id/vip_photo3"
+        android:layout_below="@+id/vip_photo2"
+        android:layout_toRightOf="@+id/bt_disp"
+        android:layout_width="240px"
+        android:layout_height="180px"
+        android:src="@mipmap/ic_launcher"/>
+    <FrameLayout
+        android:layout_toRightOf="@+id/frame_camera_ir"
+        android:layout_below="@+id/frame_camera_ir"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:id="@+id/frame_camera_draw"
+        android:scaleType="fitXY"
+        >
+        <SurfaceView
+            android:id="@+id/surfaceViewCamera"
+            android:layout_gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </SurfaceView>
+
+        <com.example.smdt.smdtaisdkdemo.FaceCanvasView
+            android:id="@+id/canvasview_draw"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="fitXY" />
+
+    </FrameLayout>
+
+</RelativeLayout>
+
+
+
