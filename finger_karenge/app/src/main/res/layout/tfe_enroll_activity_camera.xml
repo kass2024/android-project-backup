@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#00000000">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.qonics.somanet_attendance.CameraActivity" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_sheet_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#FFF"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:behavior_hideable="true"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:id="@+id/txtuser"
+            android:textSize="25dp"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:text="SHEMA Ally Blaise - 101"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:id="@+id/txtinfo"
+            android:text="Face on the camera with all ears visible!"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="120dp"
+            android:layout_height="120dp">
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:id="@+id/img1"
+                android:src="@drawable/placeholder_image"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imgicon1"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_check_box"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="120dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="120dp">
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:id="@+id/img2"
+                android:src="@drawable/placeholder_image"/>
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/imgicon2"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_check_box"/>
+        </RelativeLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:text="Capture"
+            android:textSize="25dp"
+            android:id="@+id/btncapture"
+            style="@style/Widget.AppCompat.Button.Colored"
+            />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_switchcam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:tint="@android:color/white"
+        android:src="@drawable/ic_baseline_switch_camera_24"
+        android:layout_margin="16dp"
+        />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

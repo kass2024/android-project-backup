@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">设置</string>
+
+	<string name="app_name">Somanet attendance</string>
+	<string name="title_activity_enroluser">用户登记</string>
+    <string name="title_activity_capturephoto">拍照</string>
+    <string name="title_activity_employees">用户信息</string>
+    <string name="title_activity_employee">用户详情</string>
+    <string name="title_activity_records">日志记录</string>
+    <string name="title_activity_about">关于</string>
+    <string name="title_activity_utilities">系统工具</string>
+    <string name="title_activity_system">系统设置</string>
+    <string name="title_activity_network">网络设置</string>
+
+	<!-- Main -->    
+    <string name="txt_week1">星期天</string>
+    <string name="txt_week2">星期一</string>
+    <string name="txt_week3">星期二</string>
+    <string name="txt_week4">星期三</string>
+    <string name="txt_week5">星期四</string>
+    <string name="txt_week6">星期五</string>
+    <string name="txt_week7">星期六</string>
+    <string name="main_txtinfo1">SHENZHEN FGTIT\n2009-2016</string>
+    <string name="main_txtinfo2">2016-04-22 Friday</string>
+    <string name="main_txtinfo3">10:00</string>
+
+    <string name="title_activity_login">登录</string>
+    <string name="prompt_name">用户名字</string>
+    <string name="prompt_password">密码 (可选)</string>
+    <string name="action_sign_in">签到</string>
+    <string name="action_sign_in_short">签到</string>
+    <string name="error_invalid_password">密码太短</string>
+    <string name="error_incorrect_password">密码不正确</string>
+    <string name="error_field_required">此项必填</string>
+
+    <string name="txt_query">查询类型</string>
+    <string name="txt_count">结果:0</string>
+    
+    <string name="about_caption">关于 - OnePass Access System</string>
+    <string name="about_version">版本 1.0</string>
+    <string name="about_rights">保留最终解释权,2010&#8211;2017</string>
+    
+    <string name="txt_netup1">上传用户记录</string>
+    <string name="txt_netup2">上传用户记录到服务器</string>
+    <string name="txt_netup3">上传日志记录</string>
+    <string name="txt_netup4">上传日志记录到服务器</string>
+    <string name="txt_netdn1">下载用户记录</string>
+    <string name="txt_netdn2">从服务器下载用户记录</string>
+    
+    <!-- System Setting -->    
+    <string name="txt_devicesn">设备SN</string>
+    <string name="txt_devicename">设备名字</string>
+    <string name="txt_devicemode">设备模式</string>
+	<string name="txt_matchmode">匹配模式</string>
+	<string name="txt_lockdelay">锁延迟</string>
+	<string name="txt_alarmdelay">报警延迟</string>
+    <string-array name="array_devicemode"> 
+        <item>标准</item>
+        <item>可读</item>
+    </string-array>
+    <string-array name="array_matchmode"> 
+        <item>本地</item>
+        <item>远程</item>
+    </string-array>
+    <string-array name="array_lockdelay"> 
+        <item>3</item>
+        <item>6</item>
+        <item>9</item>
+        <item>12</item>
+    </string-array>
+    <string-array name="array_alarmdelay"> 
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="lock_state">
+        <item>常开</item>
+        <item>常闭</item>
+    </string-array>
+    
+    <!-- Network Setting   -->
+    <string name="net_localwifi">WIFI</string>
+    <string name="net_wifiset">WIFI设置</string>
+    <string name="net_localeth">以太网</string>
+    <string name="net_ethset">以太网设置</string>
+    
+    <string name="net_localdhcp">Local Net DHCP</string>    
+    <string name="net_dhcpset">Enable DHCP</string>
+    <string name="net_localip">Local Net IP</string>
+    <string name="net_localgete">Local Net Gate</string>
+    <string name="net_localsub">Local Net Sub</string>
+    <string name="net_localport">Local Net Port</string>
+    
+    <string name="net_serverip">Server Net IP</string>
+    <string name="net_serverport">Server Net Port</string>    
+    <string name="net_serverweb">Web Server</string>
+  
+    <string name="networkcfg">网络设置</string>
+    <string name="not_null">非空</string>
+    <string name="net_status">网络状态</string>
+    <string name="net_setting">系统设置</string>
+    
+    <string name="txt_upd01">软件更新</string>
+    <string name="txt_upd02">现在更新</string>
+    <string name="txt_upd03">稍后更新</string>
+    <string name="txt_upd04">下载中 &#8230;</string>
+    <string name="txt_upd05">取消</string>
+    <string name="txt_upd06">不能下载文件，请检查SD卡</string>
+    <string name="txt_upd07">Network suck ah</string>
+    <string name="txt_upd08">未找到资源</string>
+    <string name="txt_upd09">已检测到，请稍后 &#8230;</string>
+    <string name="txt_upd10">当前是最新版本</string>
+    <string name="txt_upd11">Can\'t 版本更新信息</string>
+    <string name="txt_upd12">网络故障，无法连接服务器</string>
+
+    <string name="txt_cardplace">请放置智能卡 &#8230;</string>
+    <string name="txt_fingerplace">请按手指 &#8230;</string>
+    <string name="txt_fpbegin">开始确定</string>
+    <string name="txt_fpplace">请按手指</string>
+    <string name="txt_fpdisplay">显示指纹图像 &#8230;</string>
+    <string name="txt_fpprocess">开始处理 &#8230;</string>
+    <string name="txt_fpidentify">识别中 &#8230;</string>
+    <string name="txt_fpfail">生成失败!</string>
+    <string name="txt_fpmatchok">验证成功!</string>
+    <string name="txt_fpmatchfail">验证失败!</string>
+    <string name="txt_cardmatch">卡验证成功</string>
+    <string name="txt_cardsn">卡SN:</string>
+    <string name="txt_fpmatching">验证中 &#8230;</string>
+    <string name="txt_snerror">SN错误</string>
+    <string name="txt_fpclick">单机指纹图标开始</string>
+    <string name="txt_enrolinfo1">查无此人</string>
+    <string name="txt_enrolinfo2">请注册</string>
+    <string name="txt_exitinfo">再按退出</string>
+            
+    <string name="action_logon">登录</string>
+    <string name="action_return">返回</string>
+    <string name="action_enroll">注册</string>
+    <string name="action_detail">查看</string>
+    <string name="action_register">编辑</string>
+    <string name="action_edit">编辑</string>
+    <string name="action_delete">删除</string>
+    <string name="action_clear">清除</string>
+    <string name="action_save">保存</string>
+    <string name="action_make">制卡</string>
+    <string name="action_query">查询</string>
+    
+    <string name="txt_password">密码</string>
+    <string name="txt_adminname">管理员</string>
+    
+    
+    <string name="title_activity_menu">管理菜单</string>
+    <string name="txt_menu1">用户管理</string>
+    <string name="txt_menu2">日志管理</string>
+    <string name="txt_menu3">Access Control</string>
+    <string name="txt_menu4">系统设置</string>
+    <string name="txt_menu5">数据上传/下载</string>
+    <string name="txt_menu6">关于设备</string>
+    
+    <string name="txt_title_01">日志记录</string>
+    <string name="txt_info_01">查看日志记录</string>
+    <string name="txt_title_02">用户信息</string>
+    <string name="txt_info_02">登记，编辑用户信息</string>
+    <string name="txt_title_03">系统设置</string>
+    <string name="txt_info_03">系统，访问控制 </string>
+    <string name="txt_title_04">网络设置</string>
+    <string name="txt_info_04">网络,Wifi,服务器</string>
+    <string name="txt_title_05">数据上传/下载</string>
+    <string name="txt_info_05">上传和下载数据</string>
+    <string name="txt_title_06">关于</string>
+    <string name="txt_info_06">关于此程序</string>
+    <string name="txt_title_07">退出</string>
+    <string name="txt_info_07">退出此程序</string>
+    
+    <string name="txt_selall">所有</string>
+    <string name="txt_selact">管理员</string>
+    <string name="txt_selict">普通</string>
+    
+    <string name="txt_userid">编号</string>
+    <string name="txt_name">名字</string>
+    <string name="txt_datetime">日期时间</string>
+    <string name="txt_usertype">类型</string>
+    <string name="txt_male">男性</string>
+    <string name="txt_female">女性</string>
+    <string name="txt_gender">性别</string>
+    <string name="txt_phone">手机</string>
+    <string name="txt_remark">备注</string>
+    <string name="txt_photo">照片</string>
+    <string name="txt_identype">识别</string>
+    <string name="txt_enrol1">登记 1</string>
+    <string name="txt_enrol2">登记 2</string>
+    <string name="txt_enrol3">登记 3</string>
+    <string name="txt_card">智能卡</string>
+    <string name="txt_bardcode1">1D Bardcode</string>
+    <string name="txt_bardcode2">2D Barcode</string>
+    
+    <string name="us_prompt">请选择</string>
+    <string-array name="us1_array"> 
+        <item>管理员</item>
+        <item>普通</item>
+    </string-array>
+    <string-array name="us2_array"> 
+        <item>指纹</item>
+        <item>智能卡</item>
+    </string-array>
+    <string-array name="us3_array"> 
+        <item>男性</item>
+        <item>女性</item>
+    </string-array>
+    <string-array name="quy_array">
+        <item>所有</item>
+        <item>编号</item>
+        <item>名字</item>
+    </string-array> 
+    
+    <!-- Barcode Zxing -->
+    <string name="placeHolder">placeHolder</string>
+    <string name="seekbar_add">+</string>
+    <string name="seekbar_minus">-</string>
+    <string name="create">创建</string>
+    <string name="scan_failed">扫描失败</string>
+    <string name="bottom_hint">建议与相机保持10里面，尽量避免背光和阴影。</string>
+    <string name="top_hint">条码或二维码放置在框架系统内将自动扫描。</string>
+    <string name="cancel">取消</string>
+    <string name="msg_camera_framework_bug">抱歉，照相机有问题。请检查摄像机。</string>
+    <string name="button_ok">OK</string>
+    
+    <string name="capture_tophint">请把目标放在框架内</string>
+    <string name="capture_bothint">尽量避免背光和阴影 \n 按下按钮来捕捉画面或画面</string>
+    <string name="capture_caphint">拍照中，请稍等 &#8230;</string>
+    <string name="txt_finger_model">该指纹已登记，请勿重复登记</string>
+    <string name="action_485">测试485</string>
+    <string name="main_nfc_system">Enable the NFC function in the system settings!</string>
+    <string name="enroll_success">Enrolled OK!</string>
+    <string name="emp_without_face">Without Face data</string>
+
+    <string name="main_dev_not">Device does not support NFC!"</string>
+    <string name="tfe_od_app_name" translation_description="Object Detection demo app [CHAR_LIMIT=40]">Face Recognition</string>
+    <string name="tfe_od_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
+    <string name="attendance_mode">Attendance mode</string>
+    <string name="attendance_mode_descr">Switch between face and others (fingerprint and card)</string>
+</resources>
+
